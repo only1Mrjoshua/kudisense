@@ -1,718 +1,1214 @@
 <!doctype html>
-<html class="light" lang="en">
+<html lang="en" class="light">
   <head>
     <meta charset="utf-8" />
     <meta
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
       name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <title>KudiSense | The Sophisticated Steward</title>
+    <title>KudiSense | Budgeting built for Nigerian reality</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <!-- Lucide Icons (feather-based, modern replacement) -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script id="tailwind-config">
+    <script>
       tailwind.config = {
-        darkMode: "class",
         theme: {
           extend: {
             colors: {
-              "primary-fixed": "#eaddff",
-              "on-secondary-container": "#00732c",
-              "error-container": "#ffdad6",
-              "on-secondary-fixed": "#002108",
-              "surface-container-highest": "#e1e3e4",
-              "inverse-primary": "#d1bcff",
-              "on-tertiary-container": "#79849d",
-              "on-surface": "#191c1d",
-              "on-primary-container": "#936de9",
-              "surface-dim": "#d9dadb",
-              "surface-container-low": "#f3f4f5",
-              "on-tertiary-fixed": "#101b30",
-              "surface-variant": "#e1e3e4",
-              "on-primary-fixed": "#24005b",
-              "on-surface-variant": "#44474c",
-              tertiary: "#000000",
-              "surface-tint": "#6c45c0",
-              "on-secondary": "#ffffff",
-              "on-primary-fixed-variant": "#5429a7",
-              "surface-container-high": "#e7e8e9",
-              primary: "#000000",
-              "primary-fixed-dim": "#d1bcff",
-              "surface-container-lowest": "#ffffff",
-              surface: "#f8f9fa",
-              "on-tertiary": "#ffffff",
-              "on-error": "#ffffff",
-              "on-background": "#191c1d",
-              "outline-variant": "#c4c6cc",
-              "surface-bright": "#f8f9fa",
-              "tertiary-container": "#101b30",
-              "tertiary-fixed": "#d7e2ff",
-              "secondary-fixed": "#69ff87",
-              "inverse-on-surface": "#f0f1f2",
-              "inverse-surface": "#2e3132",
-              "tertiary-fixed-dim": "#bbc6e2",
-              "primary-container": "#24005b",
-              "on-secondary-fixed-variant": "#00531e",
-              "on-tertiary-fixed-variant": "#3c475d",
-              secondary: "#006e2a",
-              "on-error-container": "#93000a",
-              "secondary-container": "#5cfd80",
-              "surface-container": "#edeeef",
-              "secondary-fixed-dim": "#3ce36a",
-              background: "#f8f9fa",
-              "on-primary": "#ffffff",
-              outline: "#74777d",
-              error: "#ba1a1a",
-            },
-            borderRadius: {
-              DEFAULT: "0.25rem",
-              lg: "0.5rem",
-              xl: "0.75rem",
-              full: "9999px",
+              brand: {
+                50: "#effaf4",
+                100: "#d9f3e3",
+                200: "#b6e8ca",
+                300: "#83d7a5",
+                400: "#4dbd79",
+                500: "#1f9c57",
+                600: "#008751",
+                700: "#066b43",
+                800: "#0b5437",
+                900: "#0b452f",
+              },
+              ink: {
+                50: "#f7f8f7",
+                100: "#eef1ef",
+                200: "#d9dfdb",
+                300: "#b9c4bc",
+                400: "#8a9a90",
+                500: "#617167",
+                600: "#465349",
+                700: "#344036",
+                800: "#202a23",
+                900: "#121712",
+              },
             },
             fontFamily: {
-              headline: ["Plus Jakarta Sans"],
-              body: ["Inter"],
-              label: ["Inter"],
+              headline: ["Plus Jakarta Sans", "sans-serif"],
+              body: ["Inter", "sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 10px 30px rgba(6, 30, 17, 0.08)",
+              card: "0 8px 24px rgba(6, 30, 17, 0.06)",
+              line: "0 1px 0 rgba(17, 24, 39, 0.04)",
             },
           },
         },
       };
     </script>
     <style>
-      .glass-nav {
-        background: rgba(248, 249, 250, 0.7);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
+      html {
+        scroll-behavior: smooth;
       }
-      .hero-gradient {
-        background: linear-gradient(135deg, #000000 0%, #24005b 100%);
-      }
-      /* ensure all icons align properly */
-      .lucide {
-        width: 1.25rem;
-        height: 1.25rem;
-        stroke-width: 1.75;
-        display: inline-block;
-        vertical-align: middle;
-      }
-      button .lucide,
-      a .lucide {
-        pointer-events: none;
-      }
-      /* fix for fixed navbar spacing */
       body {
-        padding-top: 0;
-        margin: 0;
+        font-family: Inter, sans-serif;
       }
-      main {
-        padding-top: 0;
-      }
-
-      @keyframes scroll {
-        0% {
-          transform: translateX(0%);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-
-      .animate-scroll {
-        animation: scroll 5s linear infinite;
+      .lucide {
+        width: 1.1rem;
+        height: 1.1rem;
+        stroke-width: 1.9;
       }
     </style>
   </head>
   <body
-    class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed antialiased"
+    class="bg-white text-ink-900 antialiased selection:bg-brand-100 selection:text-brand-900"
   >
-    <!-- Top Navigation Bar -->
-    <nav class="fixed top-0 left-0 w-full z-50 glass-nav shadow-sm">
-      <div
-        class="flex justify-between items-center px-4 md:px-6 py-3 md:py-4 w-full max-w-7xl mx-auto pr-4 md:pr-0"
+    <div class="min-h-screen bg-white">
+      <header
+        class="sticky top-0 z-50 border-b border-ink-100 bg-white/95 backdrop-blur"
       >
-        <div class="flex items-center gap-4 md:gap-8">
-          <span
-            class="text-lg md:text-2xl font-bold text-gray-900 font-headline tracking-tight"
-          >
-            KudiSense
-          </span>
-
-          <div class="hidden md:flex gap-6 items-center">
-            <a
-              class="text-[#6c45c0] font-bold border-b-2 border-[#6c45c0] pb-1 font-headline"
-              href="#"
-            >
-              Home
-            </a>
-            <a
-              class="text-gray-500 hover:text-gray-900 transition-colors font-headline"
-              href="#"
-            >
-              Features
-            </a>
-            <a
-              class="text-gray-500 hover:text-gray-900 transition-colors font-headline"
-              href="#"
-            >
-              Pricing
-            </a>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-2 md:gap-4 pr-1 md:pr-0">
-          <button
-            class="text-on-surface-variant hover:bg-gray-100/50 p-2 rounded-full transition-all active:scale-90 flex items-center justify-center"
-            aria-label="Search"
-            id="searchBtn"
-          >
-            <i data-lucide="search" class="lucide"></i>
-          </button>
-
-          <button
-            class="text-on-surface-variant hover:bg-gray-100/50 p-2 rounded-full transition-all active:scale-90 flex items-center justify-center"
-            aria-label="Notifications"
-            id="notifyBtn"
-          >
-            <i data-lucide="bell" class="lucide"></i>
-          </button>
-
-          <button
-            class="bg-primary text-on-primary px-4 md:px-6 py-2 rounded-lg font-headline font-medium text-xs md:text-sm hover:translate-y-[-1px] transition-all whitespace-nowrap"
-          >
-            Join now
-          </button>
-        </div>
-      </div>
-    </nav>
-    <!-- main content with padding-top to prevent fixed navbar overlap -->
-    <main class="pt-24">
-      <!-- Hero Section (fully responsive) -->
-      <section class="max-w-7xl mx-auto px-5 md:px-6 py-12 md:py-24">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="space-y-6 md:space-y-8">
+        <div
+          class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
+        >
+          <a href="#" class="flex items-center gap-3">
             <div
-              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-xs font-bold tracking-widest uppercase"
+              class="flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-600 text-white shadow-card"
             >
-              <i
-                data-lucide="badge-check"
-                class="lucide w-3.5 h-3.5"
-                style="stroke-width: 2"
-              ></i>
-              <span>The Sophisticated Steward</span>
+              <span class="font-headline text-lg font-extrabold">K</span>
             </div>
-            <h1
-              class="text-4xl sm:text-5xl md:text-7xl font-extrabold font-headline leading-[1.1] tracking-tight text-primary"
-            >
-              No Nigerian should feel lost about
-              <span class="text-surface-tint">their money</span> again.
-            </h1>
-            <p
-              class="text-lg md:text-xl text-on-surface-variant max-w-lg leading-relaxed"
-            >
-              Intelligent budgeting adapted to your lifestyle and Nigerian
-              economic realities. From rent planning to fuel costs, we've got
-              you.
-            </p>
-            <div class="flex flex-wrap gap-4">
-              <button
-                class="bg-primary text-on-primary px-6 md:px-8 py-3 md:py-4 rounded-xl font-headline font-bold text-base md:text-lg hover:shadow-xl hover:translate-y-[-2px] transition-all flex items-center gap-2"
+            <div>
+              <p
+                class="font-headline text-lg font-extrabold tracking-tight text-ink-900"
               >
-                Build Your Smart Budget
-                <i
-                  data-lucide="arrow-right"
-                  class="lucide w-4 h-4 md:w-5 md:h-5"
-                ></i>
-              </button>
-              <button
-                class="border-outline-variant border-2 text-on-surface px-6 md:px-8 py-3 md:py-4 rounded-xl font-headline font-bold text-base md:text-lg hover:bg-surface-container-low transition-all"
-              >
-                See How It Works
-              </button>
-            </div>
-            <div class="flex items-center gap-4 pt-2 md:pt-4">
-              <div class="flex -space-x-3">
-                <img
-                  class="w-9 h-9 md:w-10 md:h-10 rounded-full border-2 border-surface object-cover"
-                  data-alt="professional portrait of a confident Nigerian woman smiling in a bright office setting"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWEm-qgCV2swFmUP0h1qQPWZRmb5DUak2fos-8whVyP66Xf7pQSNjlxo1bQyLnEvahDEstmcAK1ILADfJNShPNPNteFnOvKWmwvCi0z1c96c5jnBPYambvFh2monShfgPoyza9FOIK2bjMX6bNjNp7vgUhCP_EfX-vuvq4pN3qN3nDC03VRDjrrK3DGjZASIY7So5aFW-i0YPYGNfZ0AA0UnV5HRgIIsg3lGcYfnUUZHyFizKO-tiyPpNVEmFDF0noFIGfad_p66Q"
-                />
-                <img
-                  class="w-9 h-9 md:w-10 md:h-10 rounded-full border-2 border-surface object-cover"
-                  data-alt="close-up of a stylish African man wearing modern eyeglasses and a smart-casual shirt"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVV7YmeAAkkM-0OiFTTrKCel0g5xJcdFkvDnslbIbNhCIw-eFsvQmmviWdHDMXtfti7ccdghfgHQ5Wvh8oEiktUmtYpjP-Hcydmnv6eeqptkcQpAypVE5oJH-IBkHVV8WWe_pXK5PhGq_OIm-jPVO4pyaaCUXSXHgGzZdkstSG-PoE_L7lvzjwDaHTMmt6B_iYjL4ksdst_1CWEc2esT802M_2s1wKWsUuC967Y29OqTWpvcJyo0ofuCJ9G5yCH9CjdpJtD_4uSwQ"
-                />
-                <img
-                  class="w-9 h-9 md:w-10 md:h-10 rounded-full border-2 border-surface object-cover"
-                  data-alt="vibrant portrait of a young professional African man laughing in a sunlit urban space"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWts3_Q6WzVLiumuSYyGtuc-wZiUpcLpyNPdbjb2MOaVau5-Es0BZgOqexMjK7yj7NVorrHATdPNkfTGnS7JVH6wlmkzSchQ3_H7VDCy8dwZN2TclW-qNtNVKHc7XTQzW-VMU5Dc6mh1uQd2k6Jg1n_QgFgHOfCHAKVn3t0QMzCKXOIyxOaB9IMDkpBP4mmKty2iUM3624x2-wfAEfROQ14fK5AYrUtGIF5CA0iwLoqQOpbGwY8Qh61SUFxPhS3ds7GossABNssnE"
-                />
-              </div>
-              <p class="text-xs md:text-sm text-on-surface-variant font-medium">
-                Joined by 12,000+ smart Nigerians this month
+                KudiSense
+              </p>
+              <p class="text-xs font-medium text-ink-500">
+                Money clarity for Nigeria
               </p>
             </div>
-          </div>
-          <div class="relative mt-6 lg:mt-0">
-            <div
-              class="absolute -top-12 -right-12 w-64 h-64 bg-primary-fixed/30 rounded-full blur-3xl"
-            ></div>
-            <div
-              class="absolute -bottom-12 -left-12 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl"
-            ></div>
-            <div
-              class="relative bg-surface-container-highest rounded-[2rem] md:rounded-[2.5rem] p-3 md:p-4 shadow-2xl overflow-hidden border border-white/20"
+          </a>
+
+          <nav class="hidden items-center gap-8 md:flex">
+            <a
+              href="#product"
+              class="text-sm font-medium text-ink-600 transition hover:text-brand-700"
+              >Product</a
             >
-              <img
-                class="rounded-[1.8rem] md:rounded-[2rem] w-full h-[400px] sm:h-[500px] md:h-[600px] object-cover"
-                data-alt="sleek smartphone displaying a modern financial app with colorful graphs and luxury black aesthetic background"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaIwxvZhPARIMO_1GmADFiiPWXcIK60fa_mErSVGxGF9HmXbQZYs1Jkg0PHvZhpC0NtmCk7JIyTgsdGcBgkh60vZerq2_JprKMhffC-K977ES7XJqBfUIlyoJAaEzvjnNUnyBmvi3mZ8Z3FfB93Vgq4BMprwpd9vNOJigKIQbv7V5s2E3A7cu0bepRmSA4TwlOEEJFfwzjlVsMgeB99368JNNWLmGUPM4Qc2a-GePLzpSYJjmcdYDkKhcqZJfO-AXiHwpTULXqWcY"
-              />
-              <!-- Floating Insight Card -->
+            <a
+              href="#why"
+              class="text-sm font-medium text-ink-600 transition hover:text-brand-700"
+              >Why it works</a
+            >
+            <a
+              href="#proof"
+              class="text-sm font-medium text-ink-600 transition hover:text-brand-700"
+              >Results</a
+            >
+            <a
+              href="#pricing"
+              class="text-sm font-medium text-ink-600 transition hover:text-brand-700"
+              >Pricing</a
+            >
+          </nav>
+
+          <div class="flex items-center gap-3">
+            <a
+              href="#"
+              class="hidden rounded-full px-4 py-2 text-sm font-semibold text-ink-700 transition hover:bg-ink-50 sm:inline-flex"
+            >
+              Login
+            </a>
+            <a
+              href="#"
+              class="inline-flex items-center justify-center rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-card transition hover:bg-brand-700"
+            >
+              Get Started
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="relative overflow-hidden">
+          <div
+            class="absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-brand-50 to-white"
+          ></div>
+          <div
+            class="mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8 lg:py-20"
+          >
+            <div class="relative lg:col-span-6">
               <div
-                class="absolute bottom-4 left-4 right-4 md:bottom-8 md:left-8 md:right-8 glass-nav p-4 md:p-6 rounded-2xl shadow-xl border border-white/40"
+                class="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white px-3 py-1.5 shadow-line"
               >
-                <div class="flex justify-between items-end">
-                  <div>
-                    <p
-                      class="text-[10px] md:text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1"
+                <span class="h-2 w-2 rounded-full bg-brand-600"></span>
+                <span
+                  class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700"
+                >
+                  Built for Nigerian money habits
+                </span>
+              </div>
+
+              <h1
+                class="max-w-3xl font-headline text-4xl font-extrabold leading-tight tracking-tight text-ink-900 sm:text-5xl lg:text-6xl"
+              >
+                Budget for rent, fuel, food and real life, not fantasy.
+              </h1>
+
+              <p
+                class="mt-6 max-w-2xl text-base leading-8 text-ink-600 sm:text-lg"
+              >
+                KudiSense helps Nigerians plan around how money actually moves
+                here: annual rent, rising transport costs, data subscriptions,
+                NEPA bills, family support and side hustle income. One app.
+                Clear priorities. No guesswork.
+              </p>
+
+              <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href="#"
+                  class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition hover:bg-brand-700"
+                >
+                  Start your budget
+                  <i data-lucide="arrow-right"></i>
+                </a>
+                <a
+                  href="#product"
+                  class="inline-flex items-center justify-center rounded-full border border-ink-200 px-6 py-3.5 text-sm font-semibold text-ink-700 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700"
+                >
+                  See the product
+                </a>
+              </div>
+
+              <div class="mt-10 grid gap-4 sm:grid-cols-3">
+                <div
+                  class="rounded-2xl border border-ink-100 bg-white p-4 shadow-card"
+                >
+                  <p
+                    class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500"
+                  >
+                    Monthly planning
+                  </p>
+                  <p
+                    class="mt-2 font-headline text-2xl font-extrabold text-ink-900"
+                  >
+                    ₦0 guesswork
+                  </p>
+                  <p class="mt-1 text-sm text-ink-600">
+                    Know what is safe to spend after fixed needs.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-ink-100 bg-white p-4 shadow-card"
+                >
+                  <p
+                    class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500"
+                  >
+                    Rent target
+                  </p>
+                  <p
+                    class="mt-2 font-headline text-2xl font-extrabold text-ink-900"
+                  >
+                    365-day view
+                  </p>
+                  <p class="mt-1 text-sm text-ink-600">
+                    Break annual rent into daily and weekly steps.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-ink-100 bg-white p-4 shadow-card"
+                >
+                  <p
+                    class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500"
+                  >
+                    Income reality
+                  </p>
+                  <p
+                    class="mt-2 font-headline text-2xl font-extrabold text-ink-900"
+                  >
+                    Salary + hustle
+                  </p>
+                  <p class="mt-1 text-sm text-ink-600">
+                    Plan for mixed income without losing control.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative lg:col-span-6">
+              <div
+                class="rounded-[2rem] border border-brand-100 bg-white p-4 shadow-soft sm:p-5"
+              >
+                <div
+                  class="rounded-[1.6rem] border border-ink-100 bg-ink-900 p-4 sm:p-5"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p
+                        class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-200"
+                      >
+                        KudiSense budget
+                      </p>
+                      <h2
+                        class="mt-1 font-headline text-xl font-bold text-white"
+                      >
+                        April plan
+                      </h2>
+                    </div>
+                    <div
+                      class="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-brand-100"
                     >
-                      Current Balance
-                    </p>
-                    <p class="text-2xl md:text-3xl font-black font-headline">
-                      ₦4,250,000
-                    </p>
+                      Lagos
+                    </div>
                   </div>
-                  <div class="text-right">
-                    <p
-                      class="text-secondary font-bold flex items-center gap-1 text-sm md:text-base"
+
+                  <div class="mt-5 grid gap-4 sm:grid-cols-2">
+                    <div class="rounded-2xl bg-white p-4">
+                      <p
+                        class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500"
+                      >
+                        Income this month
+                      </p>
+                      <p
+                        class="mt-2 font-headline text-3xl font-extrabold text-ink-900"
+                      >
+                        ₦780,000
+                      </p>
+                      <div class="mt-4 space-y-3">
+                        <div class="flex items-center justify-between text-sm">
+                          <span class="text-ink-600">Salary</span>
+                          <span class="font-semibold text-ink-900"
+                            >₦550,000</span
+                          >
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                          <span class="text-ink-600">Freelance</span>
+                          <span class="font-semibold text-ink-900"
+                            >₦180,000</span
+                          >
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                          <span class="text-ink-600">POS side hustle</span>
+                          <span class="font-semibold text-ink-900"
+                            >₦50,000</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="rounded-2xl bg-brand-50 p-4">
+                      <p
+                        class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700"
+                      >
+                        Safe to spend
+                      </p>
+                      <p
+                        class="mt-2 font-headline text-3xl font-extrabold text-brand-800"
+                      >
+                        ₦142,500
+                      </p>
+                      <p class="mt-2 text-sm leading-6 text-brand-800/80">
+                        After rent sinking fund, transport, food, data, family
+                        support and emergency savings.
+                      </p>
+                      <div
+                        class="mt-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-brand-700"
+                      >
+                        <i data-lucide="shield-check" class="h-4 w-4"></i>
+                        Spending guard is on
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-4 rounded-2xl bg-white p-4">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <p
+                          class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500"
+                        >
+                          Budget breakdown
+                        </p>
+                        <p class="mt-1 text-sm text-ink-600">
+                          Based on your real monthly obligations
+                        </p>
+                      </div>
+                      <span
+                        class="rounded-full bg-ink-50 px-3 py-1 text-xs font-semibold text-ink-700"
+                        >Updated today</span
+                      >
+                    </div>
+
+                    <div class="mt-5 space-y-4">
+                      <div>
+                        <div
+                          class="mb-2 flex items-center justify-between text-sm"
+                        >
+                          <span class="font-medium text-ink-700"
+                            >Rent savings</span
+                          >
+                          <span class="font-semibold text-ink-900"
+                            >₦180,000</span
+                          >
+                        </div>
+                        <div class="h-2 rounded-full bg-ink-100">
+                          <div
+                            class="h-2 w-[78%] rounded-full bg-brand-600"
+                          ></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div
+                          class="mb-2 flex items-center justify-between text-sm"
+                        >
+                          <span class="font-medium text-ink-700"
+                            >Food & household</span
+                          >
+                          <span class="font-semibold text-ink-900"
+                            >₦120,000</span
+                          >
+                        </div>
+                        <div class="h-2 rounded-full bg-ink-100">
+                          <div
+                            class="h-2 w-[55%] rounded-full bg-brand-500"
+                          ></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div
+                          class="mb-2 flex items-center justify-between text-sm"
+                        >
+                          <span class="font-medium text-ink-700"
+                            >Fuel & transport</span
+                          >
+                          <span class="font-semibold text-ink-900"
+                            >₦85,000</span
+                          >
+                        </div>
+                        <div class="h-2 rounded-full bg-ink-100">
+                          <div
+                            class="h-2 w-[39%] rounded-full bg-brand-400"
+                          ></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div
+                          class="mb-2 flex items-center justify-between text-sm"
+                        >
+                          <span class="font-medium text-ink-700"
+                            >Data, airtime & subscriptions</span
+                          >
+                          <span class="font-semibold text-ink-900"
+                            >₦28,500</span
+                          >
+                        </div>
+                        <div class="h-2 rounded-full bg-ink-100">
+                          <div
+                            class="h-2 w-[21%] rounded-full bg-ink-400"
+                          ></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div
+                          class="mb-2 flex items-center justify-between text-sm"
+                        >
+                          <span class="font-medium text-ink-700"
+                            >Family support</span
+                          >
+                          <span class="font-semibold text-ink-900"
+                            >₦60,000</span
+                          >
+                        </div>
+                        <div class="h-2 rounded-full bg-ink-100">
+                          <div
+                            class="h-2 w-[32%] rounded-full bg-brand-700"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                    <div class="rounded-2xl bg-white/10 p-4">
+                      <p
+                        class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-100"
+                      >
+                        Rent goal
+                      </p>
+                      <p
+                        class="mt-2 font-headline text-2xl font-extrabold text-white"
+                      >
+                        ₦2,400,000
+                      </p>
+                      <p class="mt-2 text-sm leading-6 text-brand-100/90">
+                        Save ₦8,000 daily to stay on track for next February.
+                      </p>
+                    </div>
+                    <div class="rounded-2xl bg-white/10 p-4">
+                      <p
+                        class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-100"
+                      >
+                        Money alert
+                      </p>
+                      <p class="mt-2 text-sm leading-6 text-white">
+                        Your Bolt and lunch spend is 18% above last week. Switch
+                        two office trips to BRT and move ₦12,000 back into
+                        savings.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-5 grid gap-4 sm:grid-cols-2">
+                <div
+                  class="rounded-2xl border border-ink-100 bg-white p-4 shadow-card"
+                >
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
                     >
-                      <i
-                        data-lucide="trending-up"
-                        class="lucide w-3.5 h-3.5 md:w-4 md:h-4"
-                      ></i>
-                      +12.5%
-                    </p>
-                    <p
-                      class="text-[9px] md:text-[10px] text-on-surface-variant"
+                      <i data-lucide="home"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold text-ink-900">
+                        Annual rent planner
+                      </p>
+                      <p class="text-xs text-ink-500">
+                        For the way Nigerians actually pay rent
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="rounded-2xl border border-ink-100 bg-white p-4 shadow-card"
+                >
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
                     >
-                      vs last month
-                    </p>
+                      <i data-lucide="wallet"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold text-ink-900">
+                        Multiple income support
+                      </p>
+                      <p class="text-xs text-ink-500">
+                        Salary, freelance, business and cash inflows
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <!-- Trust Signal / Editorial Break (responsive) -->
-      <section class="bg-surface-container-low py-10 md:py-12 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6">
-          <p
-            class="text-center text-on-surface-variant text-xs md:text-sm font-bold uppercase tracking-[0.2em] mb-8"
-          >
-            Trusted by Stewards at
-          </p>
-          <div class="relative overflow-hidden">
-            <div class="flex gap-8 md:gap-12 whitespace-nowrap animate-scroll">
-              <!-- Original set -->
-              <span class="text-lg md:text-2xl font-black font-headline"
-                >VOGUE AFRICA</span
-              >
-              <span class="text-lg md:text-2xl font-black font-headline"
-                >TECH CABAL</span
-              >
-              <span class="text-lg md:text-2xl font-black font-headline"
-                >BUSINESSDAY</span
-              >
-              <span class="text-lg md:text-2xl font-black font-headline"
-                >PUNCH</span
-              >
-              <span class="text-lg md:text-2xl font-black font-headline"
-                >STEARS</span
-              >
+        </section>
 
-              <!-- Duplicate for seamless loop -->
-              <span class="text-lg md:text-2xl font-black font-headline"
-                >VOGUE AFRICA</span
-              >
-              <span class="text-lg md:text-2xl font-black font-headline"
-                >TECH CABAL</span
-              >
-              <span class="text-lg md:text-2xl font-black font-headline"
-                >BUSINESSDAY</span
-              >
-              <span class="text-lg md:text-2xl font-black font-headline"
-                >PUNCH</span
-              >
-              <span class="text-lg md:text-2xl font-black font-headline"
-                >STEARS</span
-              >
+        <section id="proof" class="border-y border-ink-100 bg-ink-50">
+          <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+            <div class="grid gap-6 lg:grid-cols-5 lg:items-center">
+              <div class="lg:col-span-2">
+                <p
+                  class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700"
+                >
+                  Built for everyday financial pressure
+                </p>
+                <h2
+                  class="mt-2 font-headline text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl"
+                >
+                  Designed around the expenses Nigerians talk about every week.
+                </h2>
+              </div>
+              <div class="grid gap-4 sm:grid-cols-3 lg:col-span-3">
+                <div
+                  class="rounded-2xl border border-ink-100 bg-white p-5 shadow-card"
+                >
+                  <p class="text-sm font-semibold text-ink-900">Rent</p>
+                  <p class="mt-1 text-sm leading-6 text-ink-600">
+                    Plan annual and biannual housing payments without panic.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-ink-100 bg-white p-5 shadow-card"
+                >
+                  <p class="text-sm font-semibold text-ink-900">
+                    Transport & fuel
+                  </p>
+                  <p class="mt-1 text-sm leading-6 text-ink-600">
+                    Track daily movement costs before they swallow your month.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-ink-100 bg-white p-5 shadow-card"
+                >
+                  <p class="text-sm font-semibold text-ink-900">
+                    NEPA, data, family support
+                  </p>
+                  <p class="mt-1 text-sm leading-6 text-ink-600">
+                    Budget for the bills and responsibilities that never wait.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      <!-- Features Bento Grid (fully mobile-adaptive) -->
-      <section class="max-w-7xl mx-auto px-5 md:px-6 py-16 md:py-24">
-        <div class="mb-12 md:mb-16">
-          <h2
-            class="text-3xl md:text-5xl font-black font-headline text-primary tracking-tight mb-3 md:mb-4"
-          >
-            Sophisticated Tools for <br />Modern Wealth.
-          </h2>
-          <p class="text-on-surface-variant text-base md:text-lg">
-            We didn't just build an app; we curated a financial concierge.
-          </p>
-        </div>
-        <div
-          class="grid md:grid-cols-12 gap-5 md:gap-6 auto-rows-auto md:h-auto"
+        </section>
+
+        <section
+          id="product"
+          class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20"
         >
-          <!-- Feature 1: Smart Allocation -->
-          <div
-            class="md:col-span-8 bg-surface-container-lowest rounded-3xl p-6 md:p-8 flex flex-col justify-between group hover:bg-primary-container transition-all duration-500 overflow-hidden relative shadow-sm"
-          >
-            <div class="relative z-10">
-              <div
-                class="w-12 h-12 md:w-14 md:h-14 bg-primary-fixed rounded-2xl flex items-center justify-center mb-5 md:mb-6 group-hover:bg-on-primary-container transition-colors"
-              >
-                <i
-                  data-lucide="pie-chart"
-                  class="lucide w-6 h-6 md:w-7 md:h-7 text-on-primary-fixed group-hover:text-primary-fixed"
-                  style="stroke-width: 1.75"
-                ></i>
-              </div>
-              <h3
-                class="text-2xl md:text-3xl font-bold font-headline mb-3 md:mb-4 group-hover:text-white transition-colors"
-              >
-                Smart Allocation
-              </h3>
-              <p
-                class="text-on-surface-variant group-hover:text-primary-fixed-dim transition-colors max-w-sm text-sm md:text-base"
-              >
-                Automatically split your income between essentials, "enjoyment,"
-                and long-term wealth building based on real Lagos/Abuja living
-                costs.
-              </p>
-            </div>
-            <div class="mt-6 md:mt-8 relative z-10">
-              <button
-                class="flex items-center gap-2 font-bold group-hover:text-white transition-colors text-sm md:text-base"
-              >
-                Explore Allocation
-                <i
-                  data-lucide="arrow-up-right"
-                  class="lucide w-3.5 h-3.5 md:w-4 md:h-4"
-                ></i>
-              </button>
-            </div>
-            <!-- Decorative Graphic -->
-            <div
-              class="absolute bottom-0 right-0 w-1/2 h-full opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none"
-            >
-              <img
-                class="object-cover h-full w-full"
-                data-alt="abstract data visualization with soft purple glow"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT7_SUIrq2cld2NEXA_qTufj5LK31rLiSOSRB61C6Bk10AwvipleCI9_B-QrFS7LIalM1Al6DIJzH7p6a4iY7ubYZnVjmPEoxgQctxgL_aBL3x5hSUMaaLGa3lG9sRvQfPE_bcKtQHDIPvlYEW5--p5lEFR1tLbX3dkbfBrKWfXITnozvsKBXS47uuiemKqZrWXWpbIrVg7hr1TeLWQthglBPgs9iSAsdSZz-KzD0AcvbTro2STpoN9kSuYFeW0YHFmrVntAxw8Z0"
-              />
-            </div>
-          </div>
-          <!-- Feature 2: Rent Intelligence -->
-          <div
-            class="md:col-span-4 bg-surface-container rounded-3xl p-6 md:p-8 flex flex-col shadow-sm relative overflow-hidden"
-          >
-            <div
-              class="w-12 h-12 md:w-14 md:h-14 bg-secondary-container rounded-2xl flex items-center justify-center mb-5 md:mb-6"
-            >
-              <i
-                data-lucide="home"
-                class="lucide w-6 h-6 md:w-7 md:h-7 text-on-secondary-fixed"
-                style="stroke-width: 1.75"
-              ></i>
-            </div>
-            <h3
-              class="text-xl md:text-2xl font-bold font-headline mb-3 md:mb-4"
-            >
-              Rent Intelligence
-            </h3>
+          <div class="max-w-3xl">
             <p
-              class="text-on-surface-variant mb-6 md:mb-8 leading-relaxed text-sm md:text-base"
-            >
-              Save for that Ikoyi or Maitama rent without the "sapa" scare. We
-              calculate daily increments based on your target date.
-            </p>
-            <div
-              class="mt-auto pt-5 md:pt-6 border-t border-outline-variant/30"
-            >
-              <div class="flex justify-between items-center mb-2">
-                <span
-                  class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-on-surface-variant"
-                  >Target: Rent 2025</span
-                >
-                <span class="text-xs md:text-sm font-black text-secondary"
-                  >65% Saved</span
-                >
-              </div>
-              <div class="h-2 w-full bg-white rounded-full overflow-hidden">
-                <div class="h-full bg-secondary w-[65%] rounded-full"></div>
-              </div>
-            </div>
-          </div>
-          <!-- Feature 3: Financial Advisor -->
-          <div
-            class="md:col-span-4 bg-[#101b30] text-white rounded-3xl p-6 md:p-8 flex flex-col shadow-sm"
-          >
-            <div
-              class="w-12 h-12 md:w-14 md:h-14 bg-tertiary-fixed rounded-2xl flex items-center justify-center mb-5 md:mb-6"
-            >
-              <i
-                data-lucide="brain"
-                class="lucide w-6 h-6 md:w-7 md:h-7 text-tertiary-container"
-                style="stroke-width: 1.75"
-              ></i>
-            </div>
-            <h3
-              class="text-xl md:text-2xl font-bold font-headline mb-3 md:mb-4"
-            >
-              Kudi AI Advisor
-            </h3>
-            <p
-              class="text-tertiary-fixed-dim mb-6 md:mb-8 text-sm md:text-base"
-            >
-              Personalized financial advice that understands "Black Tax,"
-              inflation spikes, and Nigerian investment opportunities.
-            </p>
-            <button
-              class="mt-auto bg-tertiary-fixed text-tertiary-container py-2.5 md:py-3 rounded-xl font-bold hover:bg-white transition-colors text-sm md:text-base"
-            >
-              Start Conversation
-            </button>
-          </div>
-          <!-- Feature 4: Lifestyle Curated -->
-          <div
-            class="md:col-span-8 bg-surface-container-high rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 shadow-sm"
-          >
-            <div class="flex-1">
-              <h3
-                class="text-2xl md:text-3xl font-bold font-headline mb-3 md:mb-4"
-              >
-                Lifestyle Curated
-              </h3>
-              <p
-                class="text-on-surface-variant mb-5 md:mb-6 text-sm md:text-base"
-              >
-                We track your lifestyle habits and suggest smarter ways to spend
-                on what you love without breaking the bank.
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="px-3 md:px-4 py-1.5 rounded-full bg-white text-xs font-bold text-on-surface-variant"
-                  >Dining</span
-                >
-                <span
-                  class="px-3 md:px-4 py-1.5 rounded-full bg-white text-xs font-bold text-on-surface-variant"
-                  >Travel</span
-                >
-                <span
-                  class="px-3 md:px-4 py-1.5 rounded-full bg-white text-xs font-bold text-on-surface-variant"
-                  >Fuel</span
-                >
-              </div>
-            </div>
-            <div
-              class="w-full md:w-1/3 aspect-square rounded-2xl overflow-hidden"
-            >
-              <img
-                class="w-full h-full object-cover"
-                data-alt="overhead shot of a luxury watch, high-end wallet, and espresso cup on a minimalist dark wood surface"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5yUTmM3UVA_6Yk9zBIDhKTjZfgGLCK2ZblMBGNLl0cLJIusl_AgX94fQo470kI9FGhepCjbQsx4yp9vHiNH5SX61IMaZYlCdfHzja25C8ntb297ET5KYFaQFtX75iufdMQGx9MnhWw8dq0bbFWYbu87h0BOr2qVC6xdDGQF73dcQPlWV98oWvjUS--qauGzXrKw-KTvuRMhYTZrjV2hxBDEsx8Z2nHFG-OEUgfUFf_hlcmaePvxu_cqpZ-zQrOd8kiB6C3-BKxAQ"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- CTA Section with Glassmorphism (responsive padding) -->
-      <section class="max-w-7xl mx-auto px-5 md:px-6 py-16 md:py-24">
-        <div
-          class="hero-gradient rounded-3xl md:rounded-[3rem] p-8 md:p-12 lg:p-24 text-center relative overflow-hidden"
-        >
-          <div
-            class="absolute top-0 right-0 w-72 md:w-96 h-72 md:h-96 bg-surface-tint opacity-20 blur-[120px] -mr-48 -mt-48"
-          ></div>
-          <div
-            class="absolute bottom-0 left-0 w-72 md:w-96 h-72 md:h-96 bg-secondary opacity-20 blur-[120px] -ml-48 -mb-48"
-          ></div>
-          <div class="relative z-10 max-w-3xl mx-auto">
-            <h2
-              class="text-3xl md:text-6xl font-black font-headline text-white mb-6 md:mb-8 leading-tight"
-            >
-              Master your money with Nigerian soul.
-            </h2>
-            <p
-              class="text-primary-fixed-dim text-lg md:text-xl mb-8 md:mb-12 leading-relaxed"
-            >
-              Join thousands of high-achieving Nigerians using KudiSense to
-              build multi-generational wealth while living their best life
-              today.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                class="bg-secondary-container text-on-secondary-fixed px-6 md:px-10 py-4 md:py-5 rounded-2xl font-black font-headline text-base md:text-lg hover:scale-105 active:scale-95 transition-all"
-              >
-                Download on App Store
-              </button>
-              <button
-                class="bg-white text-primary px-6 md:px-10 py-4 md:py-5 rounded-2xl font-black font-headline text-base md:text-lg hover:scale-105 active:scale-95 transition-all"
-              >
-                Get it on Play Store
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    <!-- Footer (responsive) -->
-    <footer class="bg-white pt-16 md:pt-24 pb-10 md:pb-12">
-      <div class="max-w-7xl mx-auto px-5 md:px-6">
-        <div class="grid md:grid-cols-4 gap-10 md:gap-12 mb-16 md:mb-24">
-          <div class="col-span-1 md:col-span-1">
-            <span
-              class="text-2xl font-black font-headline text-primary mb-4 md:mb-6 block"
-              >KudiSense</span
-            >
-            <p
-              class="text-on-surface-variant leading-relaxed text-sm md:text-base"
-            >
-              Sophisticated financial stewardship for the modern Nigerian.
-              Curated, intentional, and intelligent.
-            </p>
-            <div class="flex gap-4 mt-6 md:mt-8">
-              <a
-                class="w-9 h-9 md:w-10 md:h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-white transition-all"
-                href="#"
-                aria-label="Share"
-              >
-                <i data-lucide="share-2" class="lucide w-4 h-4"></i>
-              </a>
-              <a
-                class="w-9 h-9 md:w-10 md:h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-white transition-all"
-                href="#"
-                aria-label="Global"
-              >
-                <i data-lucide="globe" class="lucide w-4 h-4"></i>
-              </a>
-            </div>
-          </div>
-          <div class="space-y-3 md:space-y-4">
-            <h4
-              class="font-bold text-primary font-headline uppercase tracking-widest text-xs"
+              class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700"
             >
               Product
-            </h4>
-            <ul class="space-y-2 md:space-y-3 text-on-surface-variant text-sm">
-              <li>
-                <a class="hover:text-surface-tint transition-colors" href="#"
-                  >Rent Checker</a
-                >
-              </li>
-              <li>
-                <a class="hover:text-surface-tint transition-colors" href="#"
-                  >Smart Allocation</a
-                >
-              </li>
-              <li>
-                <a class="hover:text-surface-tint transition-colors" href="#"
-                  >Wealth Advisor</a
-                >
-              </li>
-              <li>
-                <a class="hover:text-surface-tint transition-colors" href="#"
-                  >Pricing</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="space-y-3 md:space-y-4">
-            <h4
-              class="font-bold text-primary font-headline uppercase tracking-widest text-xs"
-            >
-              Company
-            </h4>
-            <ul class="space-y-2 md:space-y-3 text-on-surface-variant text-sm">
-              <li>
-                <a class="hover:text-surface-tint transition-colors" href="#"
-                  >About Us</a
-                >
-              </li>
-              <li>
-                <a class="hover:text-surface-tint transition-colors" href="#"
-                  >Careers</a
-                >
-              </li>
-              <li>
-                <a class="hover:text-surface-tint transition-colors" href="#"
-                  >Press Kit</a
-                >
-              </li>
-              <li>
-                <a class="hover:text-surface-tint transition-colors" href="#"
-                  >Legal</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="space-y-3 md:space-y-4">
-            <h4
-              class="font-bold text-primary font-headline uppercase tracking-widest text-xs"
-            >
-              Stay Inspired
-            </h4>
-            <p class="text-sm text-on-surface-variant">
-              Weekly financial editorial in your inbox.
             </p>
-            <form class="flex flex-col gap-2">
-              <input
-                class="bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-surface-tint/40 text-sm px-4 py-2.5"
-                placeholder="steward@lifestyle.ng"
-                type="email"
-              />
-              <button
-                class="bg-primary text-white py-2.5 md:py-3 rounded-xl font-bold text-sm"
+            <h2
+              class="mt-3 font-headline text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl"
+            >
+              Everything here solves a real money problem.
+            </h2>
+            <p class="mt-4 text-base leading-8 text-ink-600 sm:text-lg">
+              No vague wellness language. No fake “AI magic.” Just practical
+              tools that help users manage cash flow, obligations and goals in a
+              Nigerian economy.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-5 lg:grid-cols-12">
+            <div
+              class="rounded-[2rem] border border-ink-100 bg-white p-6 shadow-card lg:col-span-7 lg:p-8"
+            >
+              <div
+                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
               >
-                Subscribe
-              </button>
-            </form>
+                <i data-lucide="calendar-range"></i>
+              </div>
+              <h3
+                class="mt-6 font-headline text-2xl font-bold tracking-tight text-ink-900"
+              >
+                Rent sinking fund that matches Nigerian rent cycles
+              </h3>
+              <p class="mt-3 max-w-2xl text-base leading-7 text-ink-600">
+                Most people here do not pay rent monthly. KudiSense lets users
+                set yearly or multi-month rent targets, then breaks them into
+                daily, weekly and salary-day contributions they can actually
+                follow.
+              </p>
+              <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                <div class="rounded-2xl bg-ink-50 p-4">
+                  <p class="text-sm font-semibold text-ink-900">Target rent</p>
+                  <p
+                    class="mt-2 font-headline text-3xl font-extrabold text-ink-900"
+                  >
+                    ₦3,200,000
+                  </p>
+                  <p class="mt-1 text-sm text-ink-600">
+                    Lekki 1-bedroom renewal in 10 months
+                  </p>
+                </div>
+                <div class="rounded-2xl bg-brand-50 p-4">
+                  <p class="text-sm font-semibold text-brand-800">
+                    Recommended pace
+                  </p>
+                  <p
+                    class="mt-2 font-headline text-3xl font-extrabold text-brand-800"
+                  >
+                    ₦10,667
+                  </p>
+                  <p class="mt-1 text-sm text-brand-700">
+                    Save daily or ₦320,000 monthly
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="rounded-[2rem] border border-ink-100 bg-brand-600 p-6 text-white shadow-card lg:col-span-5 lg:p-8"
+            >
+              <div
+                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 text-white"
+              >
+                <i data-lucide="badge-alert"></i>
+              </div>
+              <h3 class="mt-6 font-headline text-2xl font-bold tracking-tight">
+                Overspending alerts that make sense locally
+              </h3>
+              <p class="mt-3 text-base leading-7 text-brand-50">
+                Get nudges when transport, takeout, impulse transfers or weekend
+                spending starts eating into what should go to rent, school fees
+                or emergency savings.
+              </p>
+              <div class="mt-8 rounded-2xl bg-white/10 p-4">
+                <p class="text-sm font-semibold text-white">This week</p>
+                <p class="mt-2 text-sm leading-7 text-brand-50">
+                  “You have spent ₦24,300 more than usual on ride-hailing. Cut
+                  two trips this week and your data budget is covered.”
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="rounded-[2rem] border border-ink-100 bg-ink-900 p-6 text-white shadow-card lg:col-span-4 lg:p-8"
+            >
+              <div
+                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-brand-200"
+              >
+                <i data-lucide="briefcase-business"></i>
+              </div>
+              <h3 class="mt-6 font-headline text-2xl font-bold tracking-tight">
+                Built for salary earners with side hustles
+              </h3>
+              <p class="mt-3 text-base leading-7 text-ink-200">
+                Separate stable income from uneven income. Know what should
+                cover essentials and what can fund growth, debt payoff or “soft
+                life” without stress.
+              </p>
+            </div>
+
+            <div
+              class="rounded-[2rem] border border-ink-100 bg-white p-6 shadow-card lg:col-span-4 lg:p-8"
+            >
+              <div
+                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
+              >
+                <i data-lucide="users"></i>
+              </div>
+              <h3
+                class="mt-6 font-headline text-2xl font-bold tracking-tight text-ink-900"
+              >
+                Plan for family support without wrecking your month
+              </h3>
+              <p class="mt-3 text-base leading-7 text-ink-600">
+                Create a standing “family responsibility” line for parents,
+                siblings or dependants so surprise transfers do not destroy your
+                full budget.
+              </p>
+            </div>
+
+            <div
+              class="rounded-[2rem] border border-ink-100 bg-brand-50 p-6 shadow-card lg:col-span-4 lg:p-8"
+            >
+              <div
+                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-brand-700"
+              >
+                <i data-lucide="smartphone"></i>
+              </div>
+              <h3
+                class="mt-6 font-headline text-2xl font-bold tracking-tight text-brand-900"
+              >
+                Simple interface Nigerians will actually use
+              </h3>
+              <p class="mt-3 text-base leading-7 text-brand-900/80">
+                Fast setup. Clear numbers. Naira-first design. The product feels
+                like a serious finance tool, not a startup experiment.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="why" class="bg-ink-50">
+          <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+            <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
+              <div>
+                <p
+                  class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700"
+                >
+                  Why people stay
+                </p>
+                <h2
+                  class="mt-3 font-headline text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl"
+                >
+                  The experience feels like it understands your life.
+                </h2>
+                <p
+                  class="mt-4 max-w-2xl text-base leading-8 text-ink-600 sm:text-lg"
+                >
+                  Nigerians do not need another generic budgeting app. They need
+                  one that understands salary timing, annual rent pressure,
+                  unstable prices, multiple dependants and the reality that many
+                  people are earning from more than one place.
+                </p>
+              </div>
+
+              <div class="space-y-4">
+                <div
+                  class="rounded-3xl border border-ink-100 bg-white p-6 shadow-card"
+                >
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
+                    >
+                      <i data-lucide="banknote"></i>
+                    </div>
+                    <div>
+                      <h3 class="font-headline text-xl font-bold text-ink-900">
+                        Naira-first budgeting
+                      </h3>
+                      <p class="mt-2 text-base leading-7 text-ink-600">
+                        Every number, prompt and recommendation is framed in ₦
+                        with realistic ranges users recognize immediately.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="rounded-3xl border border-ink-100 bg-white p-6 shadow-card"
+                >
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
+                    >
+                      <i data-lucide="car-front"></i>
+                    </div>
+                    <div>
+                      <h3 class="font-headline text-xl font-bold text-ink-900">
+                        Daily expenses that reflect the street
+                      </h3>
+                      <p class="mt-2 text-base leading-7 text-ink-600">
+                        Food, fuel, keke, Bolt, school runs, data, diesel and
+                        NEPA light bills are treated as core categories, not
+                        edge cases.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="rounded-3xl border border-ink-100 bg-white p-6 shadow-card"
+                >
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
+                    >
+                      <i data-lucide="shield"></i>
+                    </div>
+                    <div>
+                      <h3 class="font-headline text-xl font-bold text-ink-900">
+                        Serious enough to trust
+                      </h3>
+                      <p class="mt-2 text-base leading-7 text-ink-600">
+                        Clean layout, clear decision states, practical copy and
+                        controlled colour use make it feel like a product built
+                        to manage real money.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="rounded-3xl border border-ink-100 bg-white p-6 shadow-card"
+                >
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
+                    >
+                      <i data-lucide="sparkles"></i>
+                    </div>
+                    <div>
+                      <h3 class="font-headline text-xl font-bold text-ink-900">
+                        Helpful without sounding fake
+                      </h3>
+                      <p class="mt-2 text-base leading-7 text-ink-600">
+                        The tone is culturally aware and practical. It sounds
+                        like a smart Nigerian product team, not imported SaaS
+                        copy.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <div class="grid gap-6 lg:grid-cols-3">
+            <div
+              class="rounded-[2rem] border border-ink-100 bg-white p-6 shadow-card lg:p-8"
+            >
+              <p
+                class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700"
+              >
+                Case 01
+              </p>
+              <h3
+                class="mt-4 font-headline text-2xl font-bold tracking-tight text-ink-900"
+              >
+                Young professional in Lagos
+              </h3>
+              <p class="mt-4 text-base leading-7 text-ink-600">
+                “I knew my salary was disappearing, but I could not see where.
+                KudiSense helped me separate rent savings from everyday spending
+                and finally plan transport and food properly.”
+              </p>
+              <div class="mt-6 border-t border-ink-100 pt-6">
+                <p class="text-sm font-semibold text-ink-900">
+                  Saved toward rent in 7 months
+                </p>
+                <p
+                  class="mt-2 font-headline text-3xl font-extrabold text-brand-700"
+                >
+                  ₦1,260,000
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="rounded-[2rem] border border-ink-100 bg-white p-6 shadow-card lg:p-8"
+            >
+              <p
+                class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700"
+              >
+                Case 02
+              </p>
+              <h3
+                class="mt-4 font-headline text-2xl font-bold tracking-tight text-ink-900"
+              >
+                Salary + freelance designer
+              </h3>
+              <p class="mt-4 text-base leading-7 text-ink-600">
+                “The best part is how it treats irregular income. I know exactly
+                what my salary should cover and what freelance money should do
+                for debt, savings and family support.”
+              </p>
+              <div class="mt-6 border-t border-ink-100 pt-6">
+                <p class="text-sm font-semibold text-ink-900">
+                  Average monthly overspend reduced
+                </p>
+                <p
+                  class="mt-2 font-headline text-3xl font-extrabold text-brand-700"
+                >
+                  31%
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="rounded-[2rem] border border-ink-100 bg-brand-600 p-6 text-white shadow-card lg:p-8"
+            >
+              <p
+                class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-100"
+              >
+                Case 03
+              </p>
+              <h3 class="mt-4 font-headline text-2xl font-bold tracking-tight">
+                Family-first household planner
+              </h3>
+              <p class="mt-4 text-base leading-7 text-brand-50">
+                “Once I created a fixed line for home support, I stopped
+                pretending those transfers were random. Now my own bills and my
+                family obligations can exist in the same plan.”
+              </p>
+              <div class="mt-6 border-t border-white/15 pt-6">
+                <p class="text-sm font-semibold text-white">
+                  Emergency savings built in 5 months
+                </p>
+                <p
+                  class="mt-2 font-headline text-3xl font-extrabold text-white"
+                >
+                  ₦420,000
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="pricing" class="bg-ink-900">
+          <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+            <div class="mx-auto max-w-3xl text-center">
+              <p
+                class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-200"
+              >
+                Pricing
+              </p>
+              <h2
+                class="mt-3 font-headline text-3xl font-extrabold tracking-tight text-white sm:text-4xl"
+              >
+                Straightforward pricing for people who want control.
+              </h2>
+              <p class="mt-4 text-base leading-8 text-ink-200 sm:text-lg">
+                Start free. Upgrade only when you want deeper planning, smarter
+                alerts and long-term goal tracking.
+              </p>
+            </div>
+
+            <div class="mx-auto mt-10 grid max-w-5xl gap-6 lg:grid-cols-2">
+              <div
+                class="rounded-[2rem] border border-white/10 bg-white/5 p-6 text-white shadow-card lg:p-8"
+              >
+                <p class="text-sm font-semibold text-brand-200">Starter</p>
+                <div class="mt-4 flex items-end gap-2">
+                  <span class="font-headline text-4xl font-extrabold">₦0</span>
+                  <span class="pb-1 text-sm text-ink-300">/ month</span>
+                </div>
+                <p class="mt-4 text-sm leading-7 text-ink-200">
+                  For anyone who wants a simple, disciplined monthly budget with
+                  Nigerian categories.
+                </p>
+                <ul class="mt-6 space-y-3 text-sm text-ink-100">
+                  <li class="flex items-start gap-3">
+                    <i data-lucide="check" class="mt-0.5 text-brand-300"></i
+                    ><span>Monthly budget setup</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i data-lucide="check" class="mt-0.5 text-brand-300"></i
+                    ><span
+                      >Rent, food, transport, data and bill categories</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i data-lucide="check" class="mt-0.5 text-brand-300"></i
+                    ><span>Manual spending tracking</span>
+                  </li>
+                </ul>
+                <a
+                  href="#"
+                  class="mt-8 inline-flex w-full items-center justify-center rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                >
+                  Start free
+                </a>
+              </div>
+
+              <div
+                class="rounded-[2rem] border border-brand-400 bg-white p-6 shadow-soft lg:p-8"
+              >
+                <div class="flex items-center justify-between">
+                  <p class="text-sm font-semibold text-brand-700">
+                    KudiSense Plus
+                  </p>
+                  <span
+                    class="rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700"
+                    >Most popular</span
+                  >
+                </div>
+                <div class="mt-4 flex items-end gap-2">
+                  <span
+                    class="font-headline text-4xl font-extrabold text-ink-900"
+                    >₦2,500</span
+                  >
+                  <span class="pb-1 text-sm text-ink-500">/ month</span>
+                </div>
+                <p class="mt-4 text-sm leading-7 text-ink-600">
+                  For users planning annual rent, multiple income streams,
+                  family support and serious financial goals.
+                </p>
+                <ul class="mt-6 space-y-3 text-sm text-ink-700">
+                  <li class="flex items-start gap-3">
+                    <i data-lucide="check" class="mt-0.5 text-brand-700"></i
+                    ><span>Everything in Starter</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i data-lucide="check" class="mt-0.5 text-brand-700"></i
+                    ><span>Annual rent planner and sinking funds</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i data-lucide="check" class="mt-0.5 text-brand-700"></i
+                    ><span>Salary + side hustle planning</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i data-lucide="check" class="mt-0.5 text-brand-700"></i
+                    ><span>Overspend alerts and budget health insights</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i data-lucide="check" class="mt-0.5 text-brand-700"></i
+                    ><span
+                      >Family responsibility and emergency fund tracking</span
+                    >
+                  </li>
+                </ul>
+                <a
+                  href="#"
+                  class="mt-8 inline-flex w-full items-center justify-center rounded-full bg-brand-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-700"
+                >
+                  Get KudiSense Plus
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <div
+            class="rounded-[2rem] border border-brand-100 bg-gradient-to-br from-brand-50 via-white to-brand-50 p-8 shadow-soft sm:p-10 lg:p-14"
+          >
+            <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+              <div>
+                <p
+                  class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700"
+                >
+                  Start today
+                </p>
+                <h2
+                  class="mt-3 font-headline text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl"
+                >
+                  Your money should feel organised, even when life is expensive.
+                </h2>
+                <p
+                  class="mt-4 max-w-2xl text-base leading-8 text-ink-600 sm:text-lg"
+                >
+                  Build a budget around the life you are actually living now
+                  while still moving toward rent, savings and peace of mind.
+                </p>
+              </div>
+              <div class="flex flex-col gap-3 sm:flex-row lg:justify-end">
+                <a
+                  href="#"
+                  class="inline-flex items-center justify-center rounded-full bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white shadow-card transition hover:bg-brand-700"
+                >
+                  Create free account
+                </a>
+                <a
+                  href="#"
+                  class="inline-flex items-center justify-center rounded-full border border-ink-200 bg-white px-6 py-3.5 text-sm font-semibold text-ink-700 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700"
+                >
+                  Book a demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-ink-100 bg-white">
+        <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+            <div>
+              <div class="flex items-center gap-3">
+                <div
+                  class="flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-600 text-white"
+                >
+                  <span class="font-headline text-lg font-extrabold">K</span>
+                </div>
+                <div>
+                  <p
+                    class="font-headline text-lg font-extrabold tracking-tight text-ink-900"
+                  >
+                    KudiSense
+                  </p>
+                  <p class="text-xs font-medium text-ink-500">
+                    Built for Nigerian reality
+                  </p>
+                </div>
+              </div>
+              <p class="mt-4 max-w-sm text-sm leading-7 text-ink-600">
+                A premium Nigerian budgeting product for people who want more
+                control over rent, bills, family support and everyday spending.
+              </p>
+            </div>
+
+            <div>
+              <p
+                class="text-xs font-semibold uppercase tracking-[0.18em] text-ink-500"
+              >
+                Product
+              </p>
+              <ul class="mt-4 space-y-3 text-sm text-ink-600">
+                <li>
+                  <a href="#product" class="transition hover:text-brand-700"
+                    >Rent Planner</a
+                  >
+                </li>
+                <li>
+                  <a href="#product" class="transition hover:text-brand-700"
+                    >Budget Tracking</a
+                  >
+                </li>
+                <li>
+                  <a href="#product" class="transition hover:text-brand-700"
+                    >Income Planning</a
+                  >
+                </li>
+                <li>
+                  <a href="#pricing" class="transition hover:text-brand-700"
+                    >Pricing</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p
+                class="text-xs font-semibold uppercase tracking-[0.18em] text-ink-500"
+              >
+                Company
+              </p>
+              <ul class="mt-4 space-y-3 text-sm text-ink-600">
+                <li>
+                  <a href="#" class="transition hover:text-brand-700">About</a>
+                </li>
+                <li>
+                  <a href="#" class="transition hover:text-brand-700"
+                    >Security</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="transition hover:text-brand-700"
+                    >Privacy</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="transition hover:text-brand-700"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p
+                class="text-xs font-semibold uppercase tracking-[0.18em] text-ink-500"
+              >
+                Stay in the loop
+              </p>
+              <p class="mt-4 text-sm leading-7 text-ink-600">
+                Join the list for practical money tips written for Nigerians.
+              </p>
+              <form class="mt-4 space-y-3">
+                <input
+                  type="email"
+                  placeholder="name@email.com"
+                  class="w-full rounded-2xl border border-ink-200 px-4 py-3 text-sm text-ink-900 placeholder:text-ink-400 focus:border-brand-300 focus:ring-brand-200"
+                />
+                <button
+                  type="submit"
+                  class="inline-flex w-full items-center justify-center rounded-full bg-brand-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-700"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div
+            class="mt-10 flex flex-col gap-4 border-t border-ink-100 pt-6 text-sm text-ink-500 md:flex-row md:items-center md:justify-between"
+          >
+            <p>© 2026 KudiSense Technologies. All rights reserved.</p>
+            <div class="flex items-center gap-5">
+              <a href="#" class="transition hover:text-brand-700"
+                >Privacy Policy</a
+              >
+              <a href="#" class="transition hover:text-brand-700">Terms</a>
+              <a href="#" class="transition hover:text-brand-700">Cookies</a>
+            </div>
           </div>
         </div>
-        <div
-          class="pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-on-surface-variant"
-        >
-          <p>© 2024 KudiSense Technologies. All rights reserved.</p>
-          <div class="flex gap-6 md:gap-8">
-            <a class="hover:text-primary" href="#">Privacy Policy</a>
-            <a class="hover:text-primary" href="#">Terms of Service</a>
-            <a class="hover:text-primary" href="#">Cookie Settings</a>
-          </div>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
     <script>
-      // Initialize Lucide Icons after DOM loads
-      document.addEventListener("DOMContentLoaded", function () {
-        if (typeof lucide !== "undefined" && lucide.createIcons) {
-          lucide.createIcons();
-        } else {
-          // fallback: if lucide not loaded, try again after a short delay
-          setTimeout(() => {
-            if (typeof lucide !== "undefined" && lucide.createIcons) {
-              lucide.createIcons();
-            }
-          }, 100);
-        }
-      });
+      lucide.createIcons();
     </script>
   </body>
 </html>
