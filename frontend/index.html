@@ -17,6 +17,7 @@
     />
     <script>
       tailwind.config = {
+        darkMode: "class",
         theme: {
           extend: {
             colors: {
@@ -64,20 +65,142 @@
       }
       body {
         font-family: Inter, sans-serif;
+        transition:
+          background-color 0.2s ease,
+          color 0.2s ease;
       }
       .lucide {
         width: 1.1rem;
         height: 1.1rem;
         stroke-width: 1.9;
       }
+      /* Dark mode overrides for custom elements not fully covered by Tailwind classes */
+      .dark .shadow-card {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      }
+      .dark .shadow-soft {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      }
+      .dark .shadow-line {
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+      }
+      .dark .border-ink-100 {
+        border-color: #2a352e;
+      }
+      .dark .bg-white {
+        background-color: #111811;
+      }
+      .dark .bg-ink-50 {
+        background-color: #0f1411;
+      }
+      .dark .text-ink-600 {
+        color: #9aa99f;
+      }
+      .dark .text-ink-500 {
+        color: #8a9a90;
+      }
+      .dark .text-ink-700 {
+        color: #cbd8cf;
+      }
+      .dark .text-ink-900 {
+        color: #edf3ea;
+      }
+      .dark .bg-brand-50 {
+        background-color: #0a2f1f;
+      }
+      .dark .bg-brand-600 {
+        background-color: #008751;
+      }
+      .dark .hover\:bg-brand-700:hover {
+        background-color: #066b43 !important;
+      }
+      .dark .hover\:bg-ink-50:hover {
+        background-color: #1e2a22 !important;
+      }
+      .dark .border-brand-100 {
+        border-color: #1a4732;
+      }
+      .dark .bg-white\/10 {
+        background-color: rgba(255, 255, 255, 0.08);
+      }
+      .dark .bg-white\/15 {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .dark .bg-ink-900 {
+        background-color: #0a0f0c;
+      }
+      .dark .bg-brand-900 {
+        background-color: #0b452f;
+      }
+      .dark .text-brand-800\/80 {
+        color: rgba(131, 215, 165, 0.8);
+      }
+      .dark .text-brand-900 {
+        color: #d9f3e3;
+      }
+      .dark .bg-ink-100 {
+        background-color: #1e2a22;
+      }
+      .dark .hover\:border-brand-200:hover {
+        border-color: #83d7a5;
+      }
+      .dark .hover\:bg-brand-50:hover {
+        background-color: #0a2f1f !important;
+      }
+      .dark .hover\:text-brand-700:hover {
+        color: #83d7a5 !important;
+      }
+      .dark .bg-gradient-to-b {
+        background-image: linear-gradient(to bottom, #0a2f1f, #111811);
+      }
+      .dark .bg-gradient-to-br {
+        background-image: linear-gradient(
+          to bottom right,
+          #0a2f1f,
+          #111811,
+          #0a2f1f
+        );
+      }
+      .dark .from-brand-50 {
+        --tw-gradient-from: #0a2f1f;
+      }
+      .dark .to-white {
+        --tw-gradient-to: #111811;
+      }
+      .dark .via-white {
+        --tw-gradient-via: #111811;
+      }
+      .dark input {
+        background-color: #1e2a22;
+        border-color: #2a352e;
+        color: #edf3ea;
+      }
+      .dark input::placeholder {
+        color: #8a9a90;
+      }
+      .dark .text-brand-50 {
+        color: #d9f3e3;
+      }
+      .dark .text-brand-100 {
+        color: #b6e8ca;
+      }
+      .dark .text-brand-200 {
+        color: #83d7a5;
+      }
+      .dark .text-brand-700 {
+        color: #83d7a5;
+      }
+      .dark .text-brand-800 {
+        color: #b6e8ca;
+      }
     </style>
   </head>
   <body
-    class="bg-white text-ink-900 antialiased selection:bg-brand-100 selection:text-brand-900"
+    class="bg-white text-ink-900 antialiased selection:bg-brand-100 selection:text-brand-900 dark:bg-[#111811] dark:text-[#edf3ea]"
   >
-    <div class="min-h-screen bg-white">
+    <div class="min-h-screen">
       <header
-        class="sticky top-0 z-50 border-b border-ink-100 bg-white/95 backdrop-blur"
+        class="sticky top-0 z-50 border-b border-ink-100 bg-white/95 backdrop-blur dark:border-[#2a352e] dark:bg-[#111811]/95"
       >
         <div
           class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
@@ -90,11 +213,11 @@
             </div>
             <div>
               <p
-                class="font-headline text-lg font-extrabold tracking-tight text-ink-900"
+                class="font-headline text-lg font-extrabold tracking-tight text-ink-900 dark:text-white"
               >
                 KudiSense
               </p>
-              <p class="text-xs font-medium text-ink-500">
+              <p class="text-xs font-medium text-ink-500 dark:text-ink-400">
                 Money clarity for Nigeria
               </p>
             </div>
@@ -103,25 +226,35 @@
           <nav class="hidden items-center gap-8 md:flex">
             <a
               href="#product"
-              class="text-sm font-medium text-ink-600 transition hover:text-brand-700"
+              class="text-sm font-medium text-ink-600 transition hover:text-brand-700 dark:text-ink-300 dark:hover:text-brand-400"
               >Product</a
             >
             <a
               href="#why"
-              class="text-sm font-medium text-ink-600 transition hover:text-brand-700"
+              class="text-sm font-medium text-ink-600 transition hover:text-brand-700 dark:text-ink-300 dark:hover:text-brand-400"
               >Why it works</a
             >
             <a
               href="#proof"
-              class="text-sm font-medium text-ink-600 transition hover:text-brand-700"
+              class="text-sm font-medium text-ink-600 transition hover:text-brand-700 dark:text-ink-300 dark:hover:text-brand-400"
               >Results</a
             >
           </nav>
 
           <div class="flex items-center gap-3">
+            <!-- Dark mode toggle button -->
+            <button
+              id="darkModeToggle"
+              class="flex h-9 w-9 items-center justify-center rounded-full text-ink-600 transition hover:bg-ink-100 dark:text-ink-300 dark:hover:bg-[#1e2a22]"
+              aria-label="Switch dark mode"
+            >
+              <i data-lucide="moon" class="block h-5 w-5 dark:hidden"></i>
+              <i data-lucide="sun" class="hidden h-5 w-5 dark:block"></i>
+            </button>
+
             <a
               href="#"
-              class="hidden rounded-full px-4 py-2 text-sm font-semibold text-ink-700 transition hover:bg-ink-50 sm:inline-flex"
+              class="hidden rounded-full px-4 py-2 text-sm font-semibold text-ink-700 transition hover:bg-ink-50 dark:text-ink-200 dark:hover:bg-[#1e2a22] sm:inline-flex"
             >
               Login
             </a>
@@ -138,31 +271,31 @@
       <main>
         <section class="relative overflow-hidden">
           <div
-            class="absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-brand-50 to-white"
+            class="absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-brand-50 to-white dark:from-[#0a2f1f] dark:to-[#111811]"
           ></div>
           <div
             class="mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8 lg:py-20"
           >
             <div class="relative lg:col-span-6">
               <div
-                class="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white px-3 py-1.5 shadow-line"
+                class="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white px-3 py-1.5 shadow-line dark:border-[#1a4732] dark:bg-[#111811]"
               >
                 <span class="h-2 w-2 rounded-full bg-brand-600"></span>
                 <span
-                  class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700"
+                  class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300"
                 >
                   Built for Nigerian money habits
                 </span>
               </div>
 
               <h1
-                class="max-w-3xl font-headline text-4xl font-extrabold leading-tight tracking-tight text-ink-900 sm:text-5xl lg:text-6xl"
+                class="max-w-3xl font-headline text-4xl font-extrabold leading-tight tracking-tight text-ink-900 dark:text-white sm:text-5xl lg:text-6xl"
               >
                 Budget for rent, fuel, food and real life, not fantasy.
               </h1>
 
               <p
-                class="mt-6 max-w-2xl text-base leading-8 text-ink-600 sm:text-lg"
+                class="mt-6 max-w-2xl text-base leading-8 text-ink-600 dark:text-ink-300 sm:text-lg"
               >
                 KudiSense helps Nigerians plan around how money actually moves
                 here: annual rent, rising transport costs, data subscriptions,
@@ -180,7 +313,7 @@
                 </a>
                 <a
                   href="#product"
-                  class="inline-flex items-center justify-center rounded-full border border-ink-200 px-6 py-3.5 text-sm font-semibold text-ink-700 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700"
+                  class="inline-flex items-center justify-center rounded-full border border-ink-200 px-6 py-3.5 text-sm font-semibold text-ink-700 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 dark:border-[#2a352e] dark:text-ink-200 dark:hover:border-brand-500 dark:hover:bg-[#0a2f1f] dark:hover:text-brand-300"
                 >
                   See the product
                 </a>
@@ -188,53 +321,53 @@
 
               <div class="mt-10 grid gap-4 sm:grid-cols-3">
                 <div
-                  class="rounded-2xl border border-ink-100 bg-white p-4 shadow-card"
+                  class="rounded-2xl border border-ink-100 bg-white p-4 shadow-card dark:border-[#2a352e] dark:bg-[#111811]"
                 >
                   <p
-                    class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500"
+                    class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500 dark:text-ink-400"
                   >
                     Monthly planning
                   </p>
                   <p
-                    class="mt-2 font-headline text-2xl font-extrabold text-ink-900"
+                    class="mt-2 font-headline text-2xl font-extrabold text-ink-900 dark:text-white"
                   >
                     ₦0 guesswork
                   </p>
-                  <p class="mt-1 text-sm text-ink-600">
+                  <p class="mt-1 text-sm text-ink-600 dark:text-ink-300">
                     Know what is safe to spend after fixed needs.
                   </p>
                 </div>
                 <div
-                  class="rounded-2xl border border-ink-100 bg-white p-4 shadow-card"
+                  class="rounded-2xl border border-ink-100 bg-white p-4 shadow-card dark:border-[#2a352e] dark:bg-[#111811]"
                 >
                   <p
-                    class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500"
+                    class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500 dark:text-ink-400"
                   >
                     Rent target
                   </p>
                   <p
-                    class="mt-2 font-headline text-2xl font-extrabold text-ink-900"
+                    class="mt-2 font-headline text-2xl font-extrabold text-ink-900 dark:text-white"
                   >
                     365-day view
                   </p>
-                  <p class="mt-1 text-sm text-ink-600">
+                  <p class="mt-1 text-sm text-ink-600 dark:text-ink-300">
                     Break annual rent into daily and weekly steps.
                   </p>
                 </div>
                 <div
-                  class="rounded-2xl border border-ink-100 bg-white p-4 shadow-card"
+                  class="rounded-2xl border border-ink-100 bg-white p-4 shadow-card dark:border-[#2a352e] dark:bg-[#111811]"
                 >
                   <p
-                    class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500"
+                    class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500 dark:text-ink-400"
                   >
                     Income reality
                   </p>
                   <p
-                    class="mt-2 font-headline text-2xl font-extrabold text-ink-900"
+                    class="mt-2 font-headline text-2xl font-extrabold text-ink-900 dark:text-white"
                   >
                     Salary + hustle
                   </p>
-                  <p class="mt-1 text-sm text-ink-600">
+                  <p class="mt-1 text-sm text-ink-600 dark:text-ink-300">
                     Plan for mixed income without losing control.
                   </p>
                 </div>
@@ -243,15 +376,15 @@
 
             <div class="relative lg:col-span-6">
               <div
-                class="rounded-[2rem] border border-brand-100 bg-white p-4 shadow-soft sm:p-5"
+                class="rounded-[2rem] border border-brand-100 bg-white p-4 shadow-soft dark:border-[#1a4732] dark:bg-[#111811] sm:p-5"
               >
                 <div
-                  class="rounded-[1.6rem] border border-ink-100 bg-ink-900 p-4 sm:p-5"
+                  class="rounded-[1.6rem] border border-ink-100 bg-ink-900 p-4 dark:border-[#2a352e] dark:bg-[#0a0f0c] sm:p-5"
                 >
                   <div class="flex items-center justify-between">
                     <div>
                       <p
-                        class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-200"
+                        class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-200 dark:text-brand-300"
                       >
                         KudiSense budget
                       </p>
@@ -269,56 +402,67 @@
                   </div>
 
                   <div class="mt-5 grid gap-4 sm:grid-cols-2">
-                    <div class="rounded-2xl bg-white p-4">
+                    <div class="rounded-2xl bg-white p-4 dark:bg-[#111811]">
                       <p
-                        class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500"
+                        class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500 dark:text-ink-400"
                       >
                         Income this month
                       </p>
                       <p
-                        class="mt-2 font-headline text-3xl font-extrabold text-ink-900"
+                        class="mt-2 font-headline text-3xl font-extrabold text-ink-900 dark:text-white"
                       >
                         ₦780,000
                       </p>
                       <div class="mt-4 space-y-3">
                         <div class="flex items-center justify-between text-sm">
-                          <span class="text-ink-600">Salary</span>
-                          <span class="font-semibold text-ink-900"
+                          <span class="text-ink-600 dark:text-ink-300"
+                            >Salary</span
+                          >
+                          <span
+                            class="font-semibold text-ink-900 dark:text-white"
                             >₦550,000</span
                           >
                         </div>
                         <div class="flex items-center justify-between text-sm">
-                          <span class="text-ink-600">Freelance</span>
-                          <span class="font-semibold text-ink-900"
+                          <span class="text-ink-600 dark:text-ink-300"
+                            >Freelance</span
+                          >
+                          <span
+                            class="font-semibold text-ink-900 dark:text-white"
                             >₦180,000</span
                           >
                         </div>
                         <div class="flex items-center justify-between text-sm">
-                          <span class="text-ink-600">POS side hustle</span>
-                          <span class="font-semibold text-ink-900"
+                          <span class="text-ink-600 dark:text-ink-300"
+                            >POS side hustle</span
+                          >
+                          <span
+                            class="font-semibold text-ink-900 dark:text-white"
                             >₦50,000</span
                           >
                         </div>
                       </div>
                     </div>
 
-                    <div class="rounded-2xl bg-brand-50 p-4">
+                    <div class="rounded-2xl bg-brand-50 p-4 dark:bg-[#0a2f1f]">
                       <p
-                        class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700"
+                        class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700 dark:text-brand-300"
                       >
                         Safe to spend
                       </p>
                       <p
-                        class="mt-2 font-headline text-3xl font-extrabold text-brand-800"
+                        class="mt-2 font-headline text-3xl font-extrabold text-brand-800 dark:text-brand-200"
                       >
                         ₦142,500
                       </p>
-                      <p class="mt-2 text-sm leading-6 text-brand-800/80">
+                      <p
+                        class="mt-2 text-sm leading-6 text-brand-800/80 dark:text-brand-200/80"
+                      >
                         After rent sinking fund, transport, food, data, family
                         support and emergency savings.
                       </p>
                       <div
-                        class="mt-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-brand-700"
+                        class="mt-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-brand-700 dark:bg-[#1e2a22] dark:text-brand-300"
                       >
                         <i data-lucide="shield-check" class="h-4 w-4"></i>
                         Spending guard is on
@@ -326,20 +470,20 @@
                     </div>
                   </div>
 
-                  <div class="mt-4 rounded-2xl bg-white p-4">
+                  <div class="mt-4 rounded-2xl bg-white p-4 dark:bg-[#111811]">
                     <div class="flex items-center justify-between">
                       <div>
                         <p
-                          class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500"
+                          class="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500 dark:text-ink-400"
                         >
                           Budget breakdown
                         </p>
-                        <p class="mt-1 text-sm text-ink-600">
+                        <p class="mt-1 text-sm text-ink-600 dark:text-ink-300">
                           Based on your real monthly obligations
                         </p>
                       </div>
                       <span
-                        class="rounded-full bg-ink-50 px-3 py-1 text-xs font-semibold text-ink-700"
+                        class="rounded-full bg-ink-50 px-3 py-1 text-xs font-semibold text-ink-700 dark:bg-[#1e2a22] dark:text-ink-200"
                         >Updated today</span
                       >
                     </div>
@@ -349,14 +493,18 @@
                         <div
                           class="mb-2 flex items-center justify-between text-sm"
                         >
-                          <span class="font-medium text-ink-700"
+                          <span
+                            class="font-medium text-ink-700 dark:text-ink-200"
                             >Rent savings</span
                           >
-                          <span class="font-semibold text-ink-900"
+                          <span
+                            class="font-semibold text-ink-900 dark:text-white"
                             >₦180,000</span
                           >
                         </div>
-                        <div class="h-2 rounded-full bg-ink-100">
+                        <div
+                          class="h-2 rounded-full bg-ink-100 dark:bg-[#2a352e]"
+                        >
                           <div
                             class="h-2 w-[78%] rounded-full bg-brand-600"
                           ></div>
@@ -366,14 +514,18 @@
                         <div
                           class="mb-2 flex items-center justify-between text-sm"
                         >
-                          <span class="font-medium text-ink-700"
+                          <span
+                            class="font-medium text-ink-700 dark:text-ink-200"
                             >Food & household</span
                           >
-                          <span class="font-semibold text-ink-900"
+                          <span
+                            class="font-semibold text-ink-900 dark:text-white"
                             >₦120,000</span
                           >
                         </div>
-                        <div class="h-2 rounded-full bg-ink-100">
+                        <div
+                          class="h-2 rounded-full bg-ink-100 dark:bg-[#2a352e]"
+                        >
                           <div
                             class="h-2 w-[55%] rounded-full bg-brand-500"
                           ></div>
@@ -383,14 +535,18 @@
                         <div
                           class="mb-2 flex items-center justify-between text-sm"
                         >
-                          <span class="font-medium text-ink-700"
+                          <span
+                            class="font-medium text-ink-700 dark:text-ink-200"
                             >Fuel & transport</span
                           >
-                          <span class="font-semibold text-ink-900"
+                          <span
+                            class="font-semibold text-ink-900 dark:text-white"
                             >₦85,000</span
                           >
                         </div>
-                        <div class="h-2 rounded-full bg-ink-100">
+                        <div
+                          class="h-2 rounded-full bg-ink-100 dark:bg-[#2a352e]"
+                        >
                           <div
                             class="h-2 w-[39%] rounded-full bg-brand-400"
                           ></div>
@@ -400,14 +556,18 @@
                         <div
                           class="mb-2 flex items-center justify-between text-sm"
                         >
-                          <span class="font-medium text-ink-700"
+                          <span
+                            class="font-medium text-ink-700 dark:text-ink-200"
                             >Data, airtime & subscriptions</span
                           >
-                          <span class="font-semibold text-ink-900"
+                          <span
+                            class="font-semibold text-ink-900 dark:text-white"
                             >₦28,500</span
                           >
                         </div>
-                        <div class="h-2 rounded-full bg-ink-100">
+                        <div
+                          class="h-2 rounded-full bg-ink-100 dark:bg-[#2a352e]"
+                        >
                           <div
                             class="h-2 w-[21%] rounded-full bg-ink-400"
                           ></div>
@@ -417,14 +577,18 @@
                         <div
                           class="mb-2 flex items-center justify-between text-sm"
                         >
-                          <span class="font-medium text-ink-700"
+                          <span
+                            class="font-medium text-ink-700 dark:text-ink-200"
                             >Family support</span
                           >
-                          <span class="font-semibold text-ink-900"
+                          <span
+                            class="font-semibold text-ink-900 dark:text-white"
                             >₦60,000</span
                           >
                         </div>
-                        <div class="h-2 rounded-full bg-ink-100">
+                        <div
+                          class="h-2 rounded-full bg-ink-100 dark:bg-[#2a352e]"
+                        >
                           <div
                             class="h-2 w-[32%] rounded-full bg-brand-700"
                           ></div>
@@ -467,38 +631,42 @@
 
               <div class="mt-5 grid gap-4 sm:grid-cols-2">
                 <div
-                  class="rounded-2xl border border-ink-100 bg-white p-4 shadow-card"
+                  class="rounded-2xl border border-ink-100 bg-white p-4 shadow-card dark:border-[#2a352e] dark:bg-[#111811]"
                 >
                   <div class="flex items-center gap-3">
                     <div
-                      class="flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
+                      class="flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-50 text-brand-700 dark:bg-[#0a2f1f] dark:text-brand-300"
                     >
                       <i data-lucide="home"></i>
                     </div>
                     <div>
-                      <p class="text-sm font-semibold text-ink-900">
+                      <p
+                        class="text-sm font-semibold text-ink-900 dark:text-white"
+                      >
                         Annual rent planner
                       </p>
-                      <p class="text-xs text-ink-500">
+                      <p class="text-xs text-ink-500 dark:text-ink-400">
                         For the way Nigerians actually pay rent
                       </p>
                     </div>
                   </div>
                 </div>
                 <div
-                  class="rounded-2xl border border-ink-100 bg-white p-4 shadow-card"
+                  class="rounded-2xl border border-ink-100 bg-white p-4 shadow-card dark:border-[#2a352e] dark:bg-[#111811]"
                 >
                   <div class="flex items-center gap-3">
                     <div
-                      class="flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
+                      class="flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-50 text-brand-700 dark:bg-[#0a2f1f] dark:text-brand-300"
                     >
                       <i data-lucide="wallet"></i>
                     </div>
                     <div>
-                      <p class="text-sm font-semibold text-ink-900">
+                      <p
+                        class="text-sm font-semibold text-ink-900 dark:text-white"
+                      >
                         Multiple income support
                       </p>
-                      <p class="text-xs text-ink-500">
+                      <p class="text-xs text-ink-500 dark:text-ink-400">
                         Salary, freelance, business and cash inflows
                       </p>
                     </div>
@@ -509,47 +677,58 @@
           </div>
         </section>
 
-        <section id="proof" class="border-y border-ink-100 bg-ink-50">
+        <section
+          id="proof"
+          class="border-y border-ink-100 bg-ink-50 dark:border-[#2a352e] dark:bg-[#0f1411]"
+        >
           <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
             <div class="grid gap-6 lg:grid-cols-5 lg:items-center">
               <div class="lg:col-span-2">
                 <p
-                  class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700"
+                  class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300"
                 >
                   Built for everyday financial pressure
                 </p>
                 <h2
-                  class="mt-2 font-headline text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl"
+                  class="mt-2 font-headline text-2xl font-extrabold tracking-tight text-ink-900 dark:text-white sm:text-3xl"
                 >
                   Designed around the expenses Nigerians talk about every week.
                 </h2>
               </div>
               <div class="grid gap-4 sm:grid-cols-3 lg:col-span-3">
                 <div
-                  class="rounded-2xl border border-ink-100 bg-white p-5 shadow-card"
+                  class="rounded-2xl border border-ink-100 bg-white p-5 shadow-card dark:border-[#2a352e] dark:bg-[#111811]"
                 >
-                  <p class="text-sm font-semibold text-ink-900">Rent</p>
-                  <p class="mt-1 text-sm leading-6 text-ink-600">
+                  <p class="text-sm font-semibold text-ink-900 dark:text-white">
+                    Rent
+                  </p>
+                  <p
+                    class="mt-1 text-sm leading-6 text-ink-600 dark:text-ink-300"
+                  >
                     Plan annual and biannual housing payments without panic.
                   </p>
                 </div>
                 <div
-                  class="rounded-2xl border border-ink-100 bg-white p-5 shadow-card"
+                  class="rounded-2xl border border-ink-100 bg-white p-5 shadow-card dark:border-[#2a352e] dark:bg-[#111811]"
                 >
-                  <p class="text-sm font-semibold text-ink-900">
+                  <p class="text-sm font-semibold text-ink-900 dark:text-white">
                     Transport & fuel
                   </p>
-                  <p class="mt-1 text-sm leading-6 text-ink-600">
+                  <p
+                    class="mt-1 text-sm leading-6 text-ink-600 dark:text-ink-300"
+                  >
                     Track daily movement costs before they swallow your month.
                   </p>
                 </div>
                 <div
-                  class="rounded-2xl border border-ink-100 bg-white p-5 shadow-card"
+                  class="rounded-2xl border border-ink-100 bg-white p-5 shadow-card dark:border-[#2a352e] dark:bg-[#111811]"
                 >
-                  <p class="text-sm font-semibold text-ink-900">
+                  <p class="text-sm font-semibold text-ink-900 dark:text-white">
                     NEPA, data, family support
                   </p>
-                  <p class="mt-1 text-sm leading-6 text-ink-600">
+                  <p
+                    class="mt-1 text-sm leading-6 text-ink-600 dark:text-ink-300"
+                  >
                     Budget for the bills and responsibilities that never wait.
                   </p>
                 </div>
@@ -562,18 +741,21 @@
           id="product"
           class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20"
         >
+          <!-- product content remains identical structure but inherits dark classes via parent -->
           <div class="max-w-3xl">
             <p
-              class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700"
+              class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300"
             >
               Product
             </p>
             <h2
-              class="mt-3 font-headline text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl"
+              class="mt-3 font-headline text-3xl font-extrabold tracking-tight text-ink-900 dark:text-white sm:text-4xl"
             >
               Everything here solves a real money problem.
             </h2>
-            <p class="mt-4 text-base leading-8 text-ink-600 sm:text-lg">
+            <p
+              class="mt-4 text-base leading-8 text-ink-600 dark:text-ink-300 sm:text-lg"
+            >
               No vague wellness language. No fake “AI magic.” Just practical
               tools that help users manage cash flow, obligations and goals in a
               Nigerian economy.
@@ -582,46 +764,52 @@
 
           <div class="mt-10 grid gap-5 lg:grid-cols-12">
             <div
-              class="rounded-[2rem] border border-ink-100 bg-white p-6 shadow-card lg:col-span-7 lg:p-8"
+              class="rounded-[2rem] border border-ink-100 bg-white p-6 shadow-card dark:border-[#2a352e] dark:bg-[#111811] lg:col-span-7 lg:p-8"
             >
               <div
-                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
+                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-700 dark:bg-[#0a2f1f] dark:text-brand-300"
               >
                 <i data-lucide="calendar-range"></i>
               </div>
               <h3
-                class="mt-6 font-headline text-2xl font-bold tracking-tight text-ink-900"
+                class="mt-6 font-headline text-2xl font-bold tracking-tight text-ink-900 dark:text-white"
               >
                 Rent sinking fund that matches Nigerian rent cycles
               </h3>
-              <p class="mt-3 max-w-2xl text-base leading-7 text-ink-600">
+              <p
+                class="mt-3 max-w-2xl text-base leading-7 text-ink-600 dark:text-ink-300"
+              >
                 Most people here do not pay rent monthly. KudiSense lets users
                 set yearly or multi-month rent targets, then breaks them into
                 daily, weekly and salary-day contributions they can actually
                 follow.
               </p>
               <div class="mt-8 grid gap-4 sm:grid-cols-2">
-                <div class="rounded-2xl bg-ink-50 p-4">
-                  <p class="text-sm font-semibold text-ink-900">Target rent</p>
+                <div class="rounded-2xl bg-ink-50 p-4 dark:bg-[#1e2a22]">
+                  <p class="text-sm font-semibold text-ink-900 dark:text-white">
+                    Target rent
+                  </p>
                   <p
-                    class="mt-2 font-headline text-3xl font-extrabold text-ink-900"
+                    class="mt-2 font-headline text-3xl font-extrabold text-ink-900 dark:text-white"
                   >
                     ₦3,200,000
                   </p>
-                  <p class="mt-1 text-sm text-ink-600">
+                  <p class="mt-1 text-sm text-ink-600 dark:text-ink-300">
                     Lekki 1-bedroom renewal in 10 months
                   </p>
                 </div>
-                <div class="rounded-2xl bg-brand-50 p-4">
-                  <p class="text-sm font-semibold text-brand-800">
+                <div class="rounded-2xl bg-brand-50 p-4 dark:bg-[#0a2f1f]">
+                  <p
+                    class="text-sm font-semibold text-brand-800 dark:text-brand-300"
+                  >
                     Recommended pace
                   </p>
                   <p
-                    class="mt-2 font-headline text-3xl font-extrabold text-brand-800"
+                    class="mt-2 font-headline text-3xl font-extrabold text-brand-800 dark:text-brand-200"
                   >
                     ₦10,667
                   </p>
-                  <p class="mt-1 text-sm text-brand-700">
+                  <p class="mt-1 text-sm text-brand-700 dark:text-brand-300">
                     Save daily or ₦320,000 monthly
                   </p>
                 </div>
@@ -629,7 +817,7 @@
             </div>
 
             <div
-              class="rounded-[2rem] border border-ink-100 bg-brand-600 p-6 text-white shadow-card lg:col-span-5 lg:p-8"
+              class="rounded-[2rem] border border-ink-100 bg-brand-600 p-6 text-white shadow-card dark:border-[#2a352e] dark:bg-brand-700 lg:col-span-5 lg:p-8"
             >
               <div
                 class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 text-white"
@@ -654,7 +842,7 @@
             </div>
 
             <div
-              class="rounded-[2rem] border border-ink-100 bg-ink-900 p-6 text-white shadow-card lg:col-span-4 lg:p-8"
+              class="rounded-[2rem] border border-ink-100 bg-ink-900 p-6 text-white shadow-card dark:bg-black lg:col-span-4 lg:p-8"
             >
               <div
                 class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-brand-200"
@@ -672,19 +860,21 @@
             </div>
 
             <div
-              class="rounded-[2rem] border border-ink-100 bg-white p-6 shadow-card lg:col-span-4 lg:p-8"
+              class="rounded-[2rem] border border-ink-100 bg-white p-6 shadow-card dark:border-[#2a352e] dark:bg-[#111811] lg:col-span-4 lg:p-8"
             >
               <div
-                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
+                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-700 dark:bg-[#0a2f1f] dark:text-brand-300"
               >
                 <i data-lucide="users"></i>
               </div>
               <h3
-                class="mt-6 font-headline text-2xl font-bold tracking-tight text-ink-900"
+                class="mt-6 font-headline text-2xl font-bold tracking-tight text-ink-900 dark:text-white"
               >
                 Plan for family support without wrecking your month
               </h3>
-              <p class="mt-3 text-base leading-7 text-ink-600">
+              <p
+                class="mt-3 text-base leading-7 text-ink-600 dark:text-ink-300"
+              >
                 Create a standing “family responsibility” line for parents,
                 siblings or dependants so surprise transfers do not destroy your
                 full budget.
@@ -692,19 +882,21 @@
             </div>
 
             <div
-              class="rounded-[2rem] border border-ink-100 bg-brand-50 p-6 shadow-card lg:col-span-4 lg:p-8"
+              class="rounded-[2rem] border border-ink-100 bg-brand-50 p-6 shadow-card dark:border-[#2a352e] dark:bg-[#0a2f1f] lg:col-span-4 lg:p-8"
             >
               <div
-                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-brand-700"
+                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-brand-700 dark:bg-[#111811] dark:text-brand-300"
               >
                 <i data-lucide="smartphone"></i>
               </div>
               <h3
-                class="mt-6 font-headline text-2xl font-bold tracking-tight text-brand-900"
+                class="mt-6 font-headline text-2xl font-bold tracking-tight text-brand-900 dark:text-white"
               >
                 Simple interface Nigerians will actually use
               </h3>
-              <p class="mt-3 text-base leading-7 text-brand-900/80">
+              <p
+                class="mt-3 text-base leading-7 text-brand-900/80 dark:text-ink-300"
+              >
                 Fast setup. Clear numbers. Naira-first design. The product feels
                 like a serious finance tool, not a startup experiment.
               </p>
@@ -712,22 +904,23 @@
           </div>
         </section>
 
-        <section id="why" class="bg-ink-50">
+        <section id="why" class="bg-ink-50 dark:bg-[#0f1411]">
           <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+            <!-- content adjusted for dark -->
             <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
               <div>
                 <p
-                  class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700"
+                  class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300"
                 >
                   Why people stay
                 </p>
                 <h2
-                  class="mt-3 font-headline text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl"
+                  class="mt-3 font-headline text-3xl font-extrabold tracking-tight text-ink-900 dark:text-white sm:text-4xl"
                 >
                   The experience feels like it understands your life.
                 </h2>
                 <p
-                  class="mt-4 max-w-2xl text-base leading-8 text-ink-600 sm:text-lg"
+                  class="mt-4 max-w-2xl text-base leading-8 text-ink-600 dark:text-ink-300 sm:text-lg"
                 >
                   Nigerians do not need another generic budgeting app. They need
                   one that understands salary timing, annual rent pressure,
@@ -738,40 +931,47 @@
 
               <div class="space-y-4">
                 <div
-                  class="rounded-3xl border border-ink-100 bg-white p-6 shadow-card"
+                  class="rounded-3xl border border-ink-100 bg-white p-6 shadow-card dark:border-[#2a352e] dark:bg-[#111811]"
                 >
                   <div class="flex items-start gap-4">
                     <div
-                      class="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
+                      class="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-700 dark:bg-[#0a2f1f] dark:text-brand-300"
                     >
                       <i data-lucide="banknote"></i>
                     </div>
                     <div>
-                      <h3 class="font-headline text-xl font-bold text-ink-900">
+                      <h3
+                        class="font-headline text-xl font-bold text-ink-900 dark:text-white"
+                      >
                         Naira-first budgeting
                       </h3>
-                      <p class="mt-2 text-base leading-7 text-ink-600">
+                      <p
+                        class="mt-2 text-base leading-7 text-ink-600 dark:text-ink-300"
+                      >
                         Every number, prompt and recommendation is framed in ₦
                         with realistic ranges users recognize immediately.
                       </p>
                     </div>
                   </div>
                 </div>
-
                 <div
-                  class="rounded-3xl border border-ink-100 bg-white p-6 shadow-card"
+                  class="rounded-3xl border border-ink-100 bg-white p-6 shadow-card dark:border-[#2a352e] dark:bg-[#111811]"
                 >
                   <div class="flex items-start gap-4">
                     <div
-                      class="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
+                      class="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-700 dark:bg-[#0a2f1f] dark:text-brand-300"
                     >
                       <i data-lucide="car-front"></i>
                     </div>
                     <div>
-                      <h3 class="font-headline text-xl font-bold text-ink-900">
+                      <h3
+                        class="font-headline text-xl font-bold text-ink-900 dark:text-white"
+                      >
                         Daily expenses that reflect the street
                       </h3>
-                      <p class="mt-2 text-base leading-7 text-ink-600">
+                      <p
+                        class="mt-2 text-base leading-7 text-ink-600 dark:text-ink-300"
+                      >
                         Food, fuel, keke, Bolt, school runs, data, diesel and
                         NEPA light bills are treated as core categories, not
                         edge cases.
@@ -779,46 +979,27 @@
                     </div>
                   </div>
                 </div>
-
                 <div
-                  class="rounded-3xl border border-ink-100 bg-white p-6 shadow-card"
+                  class="rounded-3xl border border-ink-100 bg-white p-6 shadow-card dark:border-[#2a352e] dark:bg-[#111811]"
                 >
                   <div class="flex items-start gap-4">
                     <div
-                      class="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
+                      class="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-700 dark:bg-[#0a2f1f] dark:text-brand-300"
                     >
                       <i data-lucide="shield"></i>
                     </div>
                     <div>
-                      <h3 class="font-headline text-xl font-bold text-ink-900">
+                      <h3
+                        class="font-headline text-xl font-bold text-ink-900 dark:text-white"
+                      >
                         Serious enough to trust
                       </h3>
-                      <p class="mt-2 text-base leading-7 text-ink-600">
+                      <p
+                        class="mt-2 text-base leading-7 text-ink-600 dark:text-ink-300"
+                      >
                         Clean layout, clear decision states, practical copy and
                         controlled colour use make it feel like a product built
                         to manage real money.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  class="rounded-3xl border border-ink-100 bg-white p-6 shadow-card"
-                >
-                  <div class="flex items-start gap-4">
-                    <div
-                      class="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-700"
-                    >
-                      <i data-lucide="sparkles"></i>
-                    </div>
-                    <div>
-                      <h3 class="font-headline text-xl font-bold text-ink-900">
-                        Helpful without sounding fake
-                      </h3>
-                      <p class="mt-2 text-base leading-7 text-ink-600">
-                        The tone is culturally aware and practical. It sounds
-                        like a smart Nigerian product team, not imported SaaS
-                        copy.
                       </p>
                     </div>
                   </div>
@@ -828,70 +1009,77 @@
           </div>
         </section>
 
+        <!-- Rest of sections (cases, CTA, footer) follow same pattern -->
         <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div class="grid gap-6 lg:grid-cols-3">
             <div
-              class="rounded-[2rem] border border-ink-100 bg-white p-6 shadow-card lg:p-8"
+              class="rounded-[2rem] border border-ink-100 bg-white p-6 shadow-card dark:border-[#2a352e] dark:bg-[#111811] lg:p-8"
             >
               <p
-                class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700"
+                class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300"
               >
                 Case 01
               </p>
               <h3
-                class="mt-4 font-headline text-2xl font-bold tracking-tight text-ink-900"
+                class="mt-4 font-headline text-2xl font-bold tracking-tight text-ink-900 dark:text-white"
               >
                 Young professional in Lagos
               </h3>
-              <p class="mt-4 text-base leading-7 text-ink-600">
+              <p
+                class="mt-4 text-base leading-7 text-ink-600 dark:text-ink-300"
+              >
                 “I knew my salary was disappearing, but I could not see where.
                 KudiSense helped me separate rent savings from everyday spending
                 and finally plan transport and food properly.”
               </p>
-              <div class="mt-6 border-t border-ink-100 pt-6">
-                <p class="text-sm font-semibold text-ink-900">
+              <div
+                class="mt-6 border-t border-ink-100 pt-6 dark:border-[#2a352e]"
+              >
+                <p class="text-sm font-semibold text-ink-900 dark:text-white">
                   Saved toward rent in 7 months
                 </p>
                 <p
-                  class="mt-2 font-headline text-3xl font-extrabold text-brand-700"
+                  class="mt-2 font-headline text-3xl font-extrabold text-brand-700 dark:text-brand-400"
                 >
                   ₦1,260,000
                 </p>
               </div>
             </div>
-
             <div
-              class="rounded-[2rem] border border-ink-100 bg-white p-6 shadow-card lg:p-8"
+              class="rounded-[2rem] border border-ink-100 bg-white p-6 shadow-card dark:border-[#2a352e] dark:bg-[#111811] lg:p-8"
             >
               <p
-                class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700"
+                class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300"
               >
                 Case 02
               </p>
               <h3
-                class="mt-4 font-headline text-2xl font-bold tracking-tight text-ink-900"
+                class="mt-4 font-headline text-2xl font-bold tracking-tight text-ink-900 dark:text-white"
               >
                 Salary + freelance designer
               </h3>
-              <p class="mt-4 text-base leading-7 text-ink-600">
+              <p
+                class="mt-4 text-base leading-7 text-ink-600 dark:text-ink-300"
+              >
                 “The best part is how it treats irregular income. I know exactly
                 what my salary should cover and what freelance money should do
                 for debt, savings and family support.”
               </p>
-              <div class="mt-6 border-t border-ink-100 pt-6">
-                <p class="text-sm font-semibold text-ink-900">
+              <div
+                class="mt-6 border-t border-ink-100 pt-6 dark:border-[#2a352e]"
+              >
+                <p class="text-sm font-semibold text-ink-900 dark:text-white">
                   Average monthly overspend reduced
                 </p>
                 <p
-                  class="mt-2 font-headline text-3xl font-extrabold text-brand-700"
+                  class="mt-2 font-headline text-3xl font-extrabold text-brand-700 dark:text-brand-400"
                 >
                   31%
                 </p>
               </div>
             </div>
-
             <div
-              class="rounded-[2rem] border border-ink-100 bg-brand-600 p-6 text-white shadow-card lg:p-8"
+              class="rounded-[2rem] border border-ink-100 bg-brand-600 p-6 text-white shadow-card dark:bg-brand-800 lg:p-8"
             >
               <p
                 class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-100"
@@ -922,22 +1110,22 @@
 
         <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div
-            class="rounded-[2rem] border border-brand-100 bg-gradient-to-br from-brand-50 via-white to-brand-50 p-8 shadow-soft sm:p-10 lg:p-14"
+            class="rounded-[2rem] border border-brand-100 bg-gradient-to-br from-brand-50 via-white to-brand-50 p-8 shadow-soft dark:border-[#1a4732] dark:from-[#0a2f1f] dark:via-[#111811] dark:to-[#0a2f1f] sm:p-10 lg:p-14"
           >
             <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
               <div>
                 <p
-                  class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700"
+                  class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300"
                 >
                   Start today
                 </p>
                 <h2
-                  class="mt-3 font-headline text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl"
+                  class="mt-3 font-headline text-3xl font-extrabold tracking-tight text-ink-900 dark:text-white sm:text-4xl"
                 >
                   Your money should feel organised, even when life is expensive.
                 </h2>
                 <p
-                  class="mt-4 max-w-2xl text-base leading-8 text-ink-600 sm:text-lg"
+                  class="mt-4 max-w-2xl text-base leading-8 text-ink-600 dark:text-ink-300 sm:text-lg"
                 >
                   Build a budget around the life you are actually living now
                   while still moving toward rent, savings and peace of mind.
@@ -947,16 +1135,17 @@
                 <a
                   href="#"
                   class="inline-flex items-center justify-center rounded-full bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white shadow-card transition hover:bg-brand-700"
+                  >Create free account</a
                 >
-                  Create free account
-                </a>
               </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer class="border-t border-ink-100 bg-white">
+      <footer
+        class="border-t border-ink-100 bg-white dark:border-[#2a352e] dark:bg-[#111811]"
+      >
         <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
             <div>
@@ -968,90 +1157,104 @@
                 </div>
                 <div>
                   <p
-                    class="font-headline text-lg font-extrabold tracking-tight text-ink-900"
+                    class="font-headline text-lg font-extrabold tracking-tight text-ink-900 dark:text-white"
                   >
                     KudiSense
                   </p>
-                  <p class="text-xs font-medium text-ink-500">
+                  <p class="text-xs font-medium text-ink-500 dark:text-ink-400">
                     Built for Nigerian reality
                   </p>
                 </div>
               </div>
-              <p class="mt-4 max-w-sm text-sm leading-7 text-ink-600">
+              <p
+                class="mt-4 max-w-sm text-sm leading-7 text-ink-600 dark:text-ink-300"
+              >
                 A premium Nigerian budgeting product for people who want more
                 control over rent, bills, family support and everyday spending.
               </p>
             </div>
-
             <div>
               <p
-                class="text-xs font-semibold uppercase tracking-[0.18em] text-ink-500"
+                class="text-xs font-semibold uppercase tracking-[0.18em] text-ink-500 dark:text-ink-400"
               >
                 Product
               </p>
-              <ul class="mt-4 space-y-3 text-sm text-ink-600">
+              <ul class="mt-4 space-y-3 text-sm text-ink-600 dark:text-ink-300">
                 <li>
-                  <a href="#product" class="transition hover:text-brand-700"
+                  <a
+                    href="#product"
+                    class="transition hover:text-brand-700 dark:hover:text-brand-400"
                     >Rent Planner</a
                   >
                 </li>
                 <li>
-                  <a href="#product" class="transition hover:text-brand-700"
+                  <a
+                    href="#product"
+                    class="transition hover:text-brand-700 dark:hover:text-brand-400"
                     >Budget Tracking</a
                   >
                 </li>
                 <li>
-                  <a href="#product" class="transition hover:text-brand-700"
+                  <a
+                    href="#product"
+                    class="transition hover:text-brand-700 dark:hover:text-brand-400"
                     >Income Planning</a
                   >
                 </li>
               </ul>
             </div>
-
             <div>
               <p
-                class="text-xs font-semibold uppercase tracking-[0.18em] text-ink-500"
+                class="text-xs font-semibold uppercase tracking-[0.18em] text-ink-500 dark:text-ink-400"
               >
                 Company
               </p>
-              <ul class="mt-4 space-y-3 text-sm text-ink-600">
+              <ul class="mt-4 space-y-3 text-sm text-ink-600 dark:text-ink-300">
                 <li>
-                  <a href="#" class="transition hover:text-brand-700">About</a>
+                  <a
+                    href="#"
+                    class="transition hover:text-brand-700 dark:hover:text-brand-400"
+                    >About</a
+                  >
                 </li>
                 <li>
-                  <a href="#" class="transition hover:text-brand-700"
+                  <a
+                    href="#"
+                    class="transition hover:text-brand-700 dark:hover:text-brand-400"
                     >Security</a
                   >
                 </li>
                 <li>
-                  <a href="#" class="transition hover:text-brand-700"
+                  <a
+                    href="#"
+                    class="transition hover:text-brand-700 dark:hover:text-brand-400"
                     >Privacy</a
                   >
                 </li>
                 <li>
-                  <a href="#" class="transition hover:text-brand-700"
+                  <a
+                    href="#"
+                    class="transition hover:text-brand-700 dark:hover:text-brand-400"
                     >Contact</a
                   >
                 </li>
               </ul>
             </div>
-
             <div>
               <p
-                class="text-xs font-semibold uppercase tracking-[0.18em] text-ink-500"
+                class="text-xs font-semibold uppercase tracking-[0.18em] text-ink-500 dark:text-ink-400"
               >
                 Stay in the loop
               </p>
-              <p class="mt-4 text-sm leading-7 text-ink-600">
+              <p class="mt-4 text-sm leading-7 text-ink-600 dark:text-ink-300">
                 Join the list for practical money tips written for Nigerians.
               </p>
               <form class="mt-4 space-y-3">
                 <input
                   type="email"
                   placeholder="name@email.com"
-                  class="w-full rounded-2xl border border-ink-200 px-4 py-3 text-sm text-ink-900 placeholder:text-ink-400 focus:border-brand-300 focus:ring-brand-200"
-                />
-                <button
+                  class="w-full rounded-2xl border border-ink-200 px-4 py-3 text-sm text-ink-900 placeholder:text-ink-400 focus:border-brand-300 focus:ring-brand-200 dark:border-[#2a352e] dark:bg-[#1e2a22] dark:text-white"
+                /><button
                   type="submit"
                   class="inline-flex w-full items-center justify-center rounded-full bg-brand-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-700"
                 >
@@ -1060,17 +1263,24 @@
               </form>
             </div>
           </div>
-
           <div
-            class="mt-10 flex flex-col gap-4 border-t border-ink-100 pt-6 text-sm text-ink-500 md:flex-row md:items-center md:justify-between"
+            class="mt-10 flex flex-col gap-4 border-t border-ink-100 pt-6 text-sm text-ink-500 dark:border-[#2a352e] dark:text-ink-400 md:flex-row md:items-center md:justify-between"
           >
             <p>© 2026 KudiSense Technologies. All rights reserved.</p>
             <div class="flex items-center gap-5">
-              <a href="#" class="transition hover:text-brand-700"
+              <a
+                href="#"
+                class="transition hover:text-brand-700 dark:hover:text-brand-400"
                 >Privacy Policy</a
+              ><a
+                href="#"
+                class="transition hover:text-brand-700 dark:hover:text-brand-400"
+                >Terms</a
+              ><a
+                href="#"
+                class="transition hover:text-brand-700 dark:hover:text-brand-400"
+                >Cookies</a
               >
-              <a href="#" class="transition hover:text-brand-700">Terms</a>
-              <a href="#" class="transition hover:text-brand-700">Cookies</a>
             </div>
           </div>
         </div>
@@ -1079,6 +1289,34 @@
 
     <script>
       lucide.createIcons();
+
+      // Dark mode toggle logic
+      const toggleBtn = document.getElementById("darkModeToggle");
+      const htmlElement = document.documentElement;
+
+      // Check local storage or system preference
+      const storedTheme = localStorage.getItem("theme");
+      const systemPrefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+
+      if (storedTheme === "dark" || (!storedTheme && systemPrefersDark)) {
+        htmlElement.classList.add("dark");
+      } else {
+        htmlElement.classList.remove("dark");
+      }
+
+      toggleBtn.addEventListener("click", () => {
+        if (htmlElement.classList.contains("dark")) {
+          htmlElement.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+        } else {
+          htmlElement.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+        }
+        // Re-initialize Lucide icons to ensure any dynamic ones update if needed
+        lucide.createIcons();
+      });
     </script>
   </body>
 </html>
